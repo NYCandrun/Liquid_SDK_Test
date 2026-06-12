@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#000000">
+<title>LiquidZork</title>
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0;background:#000;color:#fff;height:100%;overflow:hidden;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;font-size:17px;line-height:1.45}
+body{display:flex;flex-direction:column;height:100dvh;padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+
+/* Top bar */
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:8px 16px 10px;gap:12px;flex:0 0 auto}
+.iconbtn{width:40px;height:40px;border-radius:999px;background:#1a1a1a;border:none;color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:0 0 auto;transition:background .15s}
+.iconbtn:active{background:#2a2a2a}
+.iconbtn svg{width:18px;height:18px;stroke:#fff;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.title{font-size:17px;font-weight:500;letter-spacing:-.01em;color:#fff;text-align:center;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* Scroll area */
+.scroll{flex:1 1 auto;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;padding:8px 18px 12px}
+.scroll::-webkit-scrollbar{width:0;display:none}
+
+/* Messages */
+.msg{margin:14px 0;word-wrap:break-word;overflow-wrap:break-word}
+.msg.game{color:#fff;font-size:17px;line-height:1.5;white-space:pre-wrap}
+.msg.player{display:flex;justify-content:flex-end;margin:18px 0 14px}
+.msg.player .bubble{background:#1a1a1a;color:#e8e8e8;padding:10px 16px;border-radius:20px;max-width:80%;font-size:16px;line-height:1.35;white-space:pre-wrap}
+.msg.ai{color:#fff;font-size:17px;line-height:1.5;white-space:pre-wrap;border-left:2px solid #2dd4bf;padding-left:14px;margin-left:2px;color:#d8f5ef}
+.msg.ai .ai-label{display:block;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#2dd4bf;margin-bottom:6px}
+.msg.status{display:flex;align-items:center;gap:10px;background:#141414;border-radius:14px;padding:11px 14px;margin:10px 0;font-size:14px;color:#a8a8a8}
+.msg.status .ico{width:18px;height:18px;flex:0 0 auto;color:#2dd4bf}
+.msg.status .ico svg{width:18px;height:18px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.msg.status.error{color:#ff8585}
+.msg.status.error .ico{color:#ff5a5a}
+
+/* Typing indicator */
+.typing{display:inline-flex;gap:4px;align-items:center;padding:8px 0}
+.typing span{width:7px;height:7px;border-radius:50%;background:#2dd4bf;opacity:.4;animation:typing 1.2s infinite}
+.typing span:nth-child(2){animation-delay:.15s}
+.typing span:nth-child(3){animation-delay:.3s}
+@keyframes typing{0%,60%,100%{opacity:.3;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
+
+/* Quick action chips */
+.chips{display:flex;gap:8px;padding:6px 16px 8px;overflow-x:auto;-webkit-overflow-scrolling:touch;flex:0 0 auto;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;background:#141414;border:1px solid #232323;color:#e8e8e8;padding:8px 14px;border-radius:999px;font-size:14px;font-weight:500;cursor:pointer;white-space:nowrap;transition:background .15s,border-color .15s;font-family:inherit}
+.chip:active{background:#1f1f1f;border-color:#2dd4bf}
+.chip.ai{color:#2dd4bf;border-color:#1a3633}
+.chip.ai:active{background:#0f2421}
+
+/* Input bar */
+.inputbar{display:flex;align-items:center;gap:10px;padding:6px 12px 10px;flex:0 0 auto}
+.inputwrap{flex:1;display:flex;align-items:center;background:#141414;border-radius:999px;padding:6px 6px 6px 18px;min-height:48px;border:1px solid #1c1c1c}
+.inputwrap:focus-within{border-color:#2a2a2a}
+.inputwrap input{flex:1;background:transparent;border:none;outline:none;color:#fff;font-size:16px;font-family:inherit;padding:6px 8px 6px 0;min-width:0}
+.inputwrap input::placeholder{color:#6a6a6a}
+.sendbtn{width:36px;height:36px;border-radius:999px;background:#fff;border:none;color:#000;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:0 0 auto;transition:opacity .15s,background .15s}
+.sendbtn:disabled{opacity:.35;cursor:default}
+.sendbtn svg{width:16px;height:16px;stroke:#000;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.sendbtn.busy{background:#2dd4bf}
+.sendbtn.busy svg{stroke:#000}
+
+/* Settings modal */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:50;padding:20px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.modal.open{display:flex}
+.modal-card{background:#0f0f0f;border:1px solid #232323;border-radius:24px;padding:24px 22px;width:100%;max-width:380px;color:#fff}
+.modal-card h2{margin:0 0 6px;font-size:20px;font-weight:600;letter-spacing:-.01em}
+.modal-card p{margin:0 0 16px;font-size:14px;color:#a0a0a0;line-height:1.5}
+.modal-card label{display:block;font-size:13px;font-weight:500;color:#c8c8c8;margin:14px 0 6px}
+.modal-card input,.modal-card select{width:100%;background:#1a1a1a;border:1px solid #2a2a2a;color:#fff;padding:11px 14px;border-radius:12px;font-size:15px;font-family:inherit;outline:none}
+.modal-card input:focus,.modal-card select:focus{border-color:#2dd4bf}
+.modal-actions{display:flex;gap:10px;margin-top:20px}
+.modal-actions button{flex:1;padding:12px;border-radius:999px;font-size:15px;font-weight:500;border:none;cursor:pointer;font-family:inherit}
+.btn-primary{background:#fff;color:#000}
+.btn-primary:active{background:#e0e0e0}
+.btn-secondary{background:#1f1f1f;color:#fff}
+.btn-secondary:active{background:#2a2a2a}
+.modal-card a{color:#2dd4bf;text-decoration:none}
+
+/* Action sheet from "..." */
+.sheet{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;z-index:40;backdrop-filter:blur(4px)}
+.sheet.open{display:block}
+.sheet-card{position:absolute;left:12px;right:12px;bottom:calc(env(safe-area-inset-bottom) + 12px);background:#1a1a1a;border:1px solid #2a2a2a;border-radius:18px;overflow:hidden}
+.sheet-item{display:block;width:100%;background:transparent;border:none;color:#fff;padding:16px 20px;font-size:16px;text-align:left;cursor:pointer;border-bottom:1px solid #232323;font-family:inherit}
+.sheet-item:last-child{border-bottom:none}
+.sheet-item:active{background:#222}
+.sheet-item.danger{color:#ff7a7a}
+
+/* Footer hint */
+.footnote{padding:0 18px 6px;font-size:11px;color:#5a5a5a;text-align:center}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <button class="iconbtn" id="btnBack" aria-label="Back" title="Back">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <div class="title">LiquidZork</div>
+  <button class="iconbtn" id="btnMore" aria-label="More" title="More">
+    <svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.5" fill="#fff" stroke="none"/><circle cx="12" cy="12" r="1.5" fill="#fff" stroke="none"/><circle cx="19" cy="12" r="1.5" fill="#fff" stroke="none"/></svg>
+  </button>
+</div>
+
+<div class="scroll" id="scroll"></div>
+
+<div class="chips" id="chips">
+  <button class="chip ai" data-action="hint">Hint</button>
+  <button class="chip ai" data-action="hint-vague">Vague hint</button>
+  <button class="chip ai" data-action="hint-spoiler">Spoiler hint</button>
+  <button class="chip ai" data-action="describe">Describe</button>
+  <button class="chip ai" data-action="recap">Recap</button>
+  <button class="chip" data-cmd="inventory">Inventory</button>
+  <button class="chip" data-cmd="look">Look</button>
+  <button class="chip" data-cmd="north">N</button>
+  <button class="chip" data-cmd="south">S</button>
+  <button class="chip" data-cmd="east">E</button>
+  <button class="chip" data-cmd="west">W</button>
+</div>
+
+<div class="inputbar">
+  <div class="inputwrap">
+    <input id="input" type="text" placeholder="Type a command…" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false">
+    <button class="sendbtn" id="send" aria-label="Send">
+      <svg viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+    </button>
+  </div>
+</div>
+
+<div class="footnote" id="footnote">Tap ••• to set your Liquid API key</div>
+
+<!-- Settings modal -->
+<div class="modal" id="modal">
+  <div class="modal-card">
+    <h2>Settings</h2>
+    <p>LiquidZork uses an LLM for hints, vivid descriptions, and recaps. Bring your own key from <a href="https://openrouter.ai/keys" target="_blank" rel="noopener">OpenRouter</a> (it routes to Liquid AI's models).</p>
+    <label>OpenRouter API key</label>
+    <input id="apiKey" type="password" placeholder="sk-or-v1-…" autocomplete="off" spellcheck="false">
+    <label>Model</label>
+    <select id="modelSel">
+      <option value="liquid/lfm-7b">liquid/lfm-7b (fast)</option>
+      <option value="liquid/lfm-40b">liquid/lfm-40b (smarter)</option>
+      <option value="liquid/lfm-3b">liquid/lfm-3b (smallest)</option>
+    </select>
+    <div class="modal-actions">
+      <button class="btn-secondary" id="modalClose">Cancel</button>
+      <button class="btn-primary" id="modalSave">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- Action sheet -->
+<div class="sheet" id="sheet">
+  <div class="sheet-card">
+    <button class="sheet-item" data-sheet="settings">API key &amp; model</button>
+    <button class="sheet-item" data-sheet="save">Save game</button>
+    <button class="sheet-item" data-sheet="load">Load game</button>
+    <button class="sheet-item danger" data-sheet="restart">Restart game</button>
+    <button class="sheet-item" data-sheet="cancel">Cancel</button>
+  </div>
+</div>
+
+<script>
+/*INLINE_JSZM*/
+</script>
+
+<script>
+// ---------- Embedded story file (Zork I, Release 88) ----------
+const STORY_B64 = "INLINE_STORY_B64";
+
+function b64ToBytes(b64){
+  const bin = atob(b64);
+  const out = new Uint8Array(bin.length);
+  for (let i=0;i<bin.length;i++) out[i] = bin.charCodeAt(i);
+  return out;
+}
+
+// ---------- DOM helpers ----------
+const $ = id => document.getElementById(id);
+const scroll = $('scroll');
+const inputEl = $('input');
+const sendBtn = $('send');
+
+function scrollDown(){
+  requestAnimationFrame(()=>{ scroll.scrollTop = scroll.scrollHeight; });
+}
+
+function addGame(text){
+  // Strip trailing prompt ">" if present at the very end
+  text = text.replace(/\n?>\s*$/,'').trimEnd();
+  if (!text) return;
+  const el = document.createElement('div');
+  el.className = 'msg game';
+  el.textContent = text;
+  scroll.appendChild(el);
+  scrollDown();
+}
+
+function addPlayer(text){
+  const wrap = document.createElement('div');
+  wrap.className = 'msg player';
+  const b = document.createElement('div');
+  b.className = 'bubble';
+  b.textContent = text;
+  wrap.appendChild(b);
+  scroll.appendChild(wrap);
+  scrollDown();
+}
+
+function addAI(label, text){
+  const el = document.createElement('div');
+  el.className = 'msg ai';
+  const l = document.createElement('span');
+  l.className = 'ai-label';
+  l.textContent = label;
+  el.appendChild(l);
+  el.appendChild(document.createTextNode(text));
+  scroll.appendChild(el);
+  scrollDown();
+  return el;
+}
+
+function addStatus(text, isError){
+  const el = document.createElement('div');
+  el.className = 'msg status' + (isError?' error':'');
+  const ico = document.createElement('span');
+  ico.className = 'ico';
+  ico.innerHTML = isError
+    ? '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="13"/><line x1="12" y1="16" x2="12" y2="16.5"/></svg>'
+    : '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>';
+  el.appendChild(ico);
+  el.appendChild(document.createTextNode(text));
+  scroll.appendChild(el);
+  scrollDown();
+  return el;
+}
+
+function addThinking(label){
+  const el = document.createElement('div');
+  el.className = 'msg ai';
+  const l = document.createElement('span');
+  l.className = 'ai-label';
+  l.textContent = label;
+  el.appendChild(l);
+  const t = document.createElement('span');
+  t.className = 'typing';
+  t.innerHTML = '<span></span><span></span><span></span>';
+  el.appendChild(t);
+  scroll.appendChild(el);
+  scrollDown();
+  return {el, finish:(text)=>{ t.remove(); el.appendChild(document.createTextNode(text)); scrollDown(); }};
+}
+
+// ---------- Z-machine wrapper (JSZM generator-based I/O) ----------
+let zm = null;
+let zmGen = null;          // the generator returned from zm.run()
+let pendingInput = null;   // resolver for the current read()
+let outputBuffer = '';     // accumulates print() output until next read()
+let lastRoomText = '';     // tracked from status line + last "room" output
+let statusLine = '';       // current status line (room + score/moves)
+let turnLog = [];          // [{player, game}, ...] last 12 turns for recap
+
+function bootZmachine(storyBytes){
+  const z = new JSZM(storyBytes);
+
+  // print(text, scripting) — generator
+  z.print = function*(text, scripting){
+    outputBuffer += text;
+  };
+
+  // highlight(fixpitch) — generator
+  z.highlight = function*(fixpitch){ /* no-op for our flat chat UI */ };
+
+  // updateStatusLine(text, v18, v17) — generator
+  z.updateStatusLine = function*(text, v18, v17){
+    statusLine = (text||'').replace(/\s+/g,' ').trim();
+  };
+
+  // read(maxlen) — generator that yields to the UI
+  z.read = function*(maxlen){
+    // Flush whatever the VM printed since last read
+    flushGameOutput();
+    // Hand control back to the UI
+    const cmd = yield new Promise(resolve => { pendingInput = resolve; });
+    return (cmd || '').slice(0, maxlen);
+  };
+
+  // save/restore — backed by localStorage
+  z.save = function*(buf){
+    try{ localStorage.setItem('lz_save', bytesToB64(buf)); return true; }
+    catch(e){ return false; }
+  };
+  z.restore = function*(){
+    const b = localStorage.getItem('lz_save');
+    if (!b) return null;
+    return b64ToBytes(b);
+  };
+
+  zm = z;
+  zmGen = z.run();
+  stepZmachine();
+}
+
+function bytesToB64(arr){
+  let s = '';
+  for (let i=0;i<arr.length;i++) s += String.fromCharCode(arr[i]);
+  return btoa(s);
+}
+
+// Step the JSZM generator. JSZM is a generator-of-generators: it yields
+// either a Promise (when our read() yields) or another generator (when
+// it calls into print/updateStatusLine which are themselves generators).
+async function stepZmachine(value){
+  let cur = value;
+  while (true) {
+    const step = zmGen.next(cur);
+    if (step.done) {
+      flushGameOutput();
+      addStatus('Game ended. Tap ••• → Restart to play again.');
+      return;
+    }
+    const v = step.value;
+    if (v && typeof v.then === 'function') {
+      // It's a Promise — we're waiting for user input
+      cur = await v;
+      // Loop back; the next .next(cur) will pass the input back into the read() generator
+    } else if (v && typeof v.next === 'function') {
+      // It's a sub-generator (print/highlight/updateStatusLine). Drain it.
+      cur = drainSubGen(v);
+    } else {
+      cur = v;
+    }
+  }
+}
+
+function drainSubGen(g){
+  let last;
+  while (true) {
+    const s = g.next();
+    if (s.done) return s.value;
+    last = s.value;
+    // sub-generators in our setup don't yield anything meaningful
+  }
+}
+
+function flushGameOutput(){
+  const t = outputBuffer;
+  outputBuffer = '';
+  if (t.trim()) {
+    addGame(t);
+    // capture the last chunk as "room text" for AI context
+    lastRoomText = t.trim();
+  }
+}
+
+function sendToGame(cmd){
+  if (!pendingInput) return; // VM not waiting for input
+  const resolver = pendingInput;
+  pendingInput = null;
+  // log it
+  turnLog.push({player: cmd, game: ''});
+  if (turnLog.length > 12) turnLog.shift();
+  // resume the VM
+  resolver(cmd);
+}
+
+// ---------- UI wiring ----------
+let busy = false;
+
+function submitCommand(raw){
+  const cmd = (raw || inputEl.value).trim();
+  if (!cmd || busy) return;
+  inputEl.value = '';
+
+  // Intercept AI-only actions (no preceding game command)
+  const aiOnly = {
+    'hint': ()=>aiHint('normal'),
+    'hint vague': ()=>aiHint('vague'),
+    'hint spoiler': ()=>aiHint('spoiler'),
+    'recap': ()=>aiRecap(),
+    'describe': ()=>aiDescribe(),
+    'look harder': ()=>aiDescribe(),
+  };
+  const key = cmd.toLowerCase();
+  if (aiOnly[key]) { addPlayer(cmd); aiOnly[key](); return; }
+
+  // Otherwise send to the game
+  addPlayer(cmd);
+  sendToGame(cmd);
+
+  // After the VM next pauses, record the game output into the last turn
+  const tlIdx = turnLog.length - 1;
+  setTimeout(()=>{
+    if (turnLog[tlIdx]) turnLog[tlIdx].game = lastRoomText.slice(0, 800);
+  }, 50);
+
+  // Special AI augmentation triggers
+  if (/^\s*(i|inventory)\s*$/i.test(cmd)) {
+    setTimeout(()=>aiInventoryFlavor(), 60);
+  } else if (/^examine\s+\S/i.test(cmd) || /^x\s+\S/i.test(cmd)) {
+    setTimeout(()=>aiExamineFlavor(cmd), 60);
+  }
+}
+
+// ---------- Liquid (via OpenRouter) AI calls ----------
+function getKey(){ return localStorage.getItem('lz_key') || ''; }
+function getModel(){ return localStorage.getItem('lz_model') || 'liquid/lfm-7b'; }
+
+async function callLLM(system, user){
+  const key = getKey();
+  if (!key) {
+    addStatus('Set your API key first: tap ••• → API key & model', true);
+    openModal();
+    return null;
+  }
+  const model = getModel();
+  try {
+    const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json',
+        'Authorization':'Bearer ' + key,
+        'HTTP-Referer':'https://liquidzork.local',
+        'X-Title':'LiquidZork',
+      },
+      body: JSON.stringify({
+        model,
+        messages:[
+          {role:'system', content: system},
+          {role:'user', content: user},
+        ],
+        temperature: 0.7,
+        max_tokens: 220,
+      }),
+    });
+    if (!res.ok) {
+      const txt = await res.text();
+      addStatus('LLM error ' + res.status + ': ' + txt.slice(0,140), true);
+      return null;
+    }
+    const j = await res.json();
+    const msg = (j && j.choices && j.choices[0] && j.choices[0].message && j.choices[0].message.content) || '';
+    return msg.trim();
+  } catch(e){
+    addStatus('Network error: ' + (e.message || e), true);
+    return null;
+  }
+}
+
+function gameContext(){
+  return [
+    statusLine ? 'STATUS: ' + statusLine : '',
+    lastRoomText ? 'CURRENT SCENE:\n' + lastRoomText : '',
+    turnLog.length ? 'RECENT TURNS:\n' + turnLog.slice(-5).map(t=>`> ${t.player}\n${(t.game||'').slice(0,200)}`).join('\n\n') : '',
+  ].filter(Boolean).join('\n\n');
+}
+
+async function aiHint(level){
+  const t = addThinking('Hint');
+  const sys = `You are a helpful, terse hint-giver for the text adventure Zork. Give ${level==='vague'?'a very vague nudge (1 short sentence)':level==='spoiler'?'a direct, specific tip including what to do next (2-3 sentences)':'a useful hint that points the player toward what to try next without spoiling (1-2 sentences)'}. Speak as a wise narrator. Do NOT invent items or rooms not in the scene; only suggest standard Zork verbs (look, take, drop, open, close, north/south/east/west/up/down, climb, light, attack, give, throw, examine, read).`;
+  const user = `${gameContext()}\n\nGive the player a ${level} hint.`;
+  const out = await callLLM(sys, user);
+  if (out) t.finish(out); else t.el.remove();
+}
+
+async function aiRecap(){
+  const t = addThinking('Recap');
+  const sys = 'You are a storyteller. Summarize what has happened so far in this Zork playthrough in vivid but compact prose (3-4 sentences). Reference real events from the turn log only.';
+  const user = `RECENT TURNS:\n${turnLog.map(t=>`> ${t.player}\n${(t.game||'').slice(0,200)}`).join('\n\n')}\n\nWrite the recap.`;
+  const out = await callLLM(sys, user);
+  if (out) t.finish(out); else t.el.remove();
+}
+
+async function aiDescribe(){
+  const t = addThinking('Vivid description');
+  const sys = 'You are an evocative narrator. Re-describe the current Zork scene in richer, more atmospheric prose (3-4 sentences). Stay strictly faithful to what is in the scene text — no invented objects, exits, or NPCs. Match Zork\'s wry, slightly archaic tone.';
+  const user = `${gameContext()}\n\nRewrite the current scene more vividly.`;
+  const out = await callLLM(sys, user);
+  if (out) t.finish(out); else t.el.remove();
+}
+
+async function aiInventoryFlavor(){
+  // Wait for the inventory output to actually come from the VM
+  await new Promise(r=>setTimeout(r, 300));
+  const t = addThinking('Inventory');
+  const sys = 'You rephrase a Zork inventory list with light atmospheric flavor (1-2 sentences total). Stay strictly faithful to the items listed — do not add or remove anything. Keep it terse.';
+  const user = `Inventory output:\n${lastRoomText}\n\nRephrase with flavor.`;
+  const out = await callLLM(sys, user);
+  if (out) t.finish(out); else t.el.remove();
+}
+
+async function aiExamineFlavor(cmd){
+  await new Promise(r=>setTimeout(r, 300));
+  const t = addThinking('Closer look');
+  const sys = 'You add 1-2 sentences of atmospheric detail to what the player just examined in Zork. Stay strictly faithful to the game text — do not invent properties not implied. Match Zork\'s tone.';
+  const user = `The player typed: ${cmd}\n\nGame response:\n${lastRoomText}\n\nAdd a brief atmospheric flourish.`;
+  const out = await callLLM(sys, user);
+  if (out) t.finish(out); else t.el.remove();
+}
+
+// ---------- Chips ----------
+document.getElementById('chips').addEventListener('click', e=>{
+  const btn = e.target.closest('.chip');
+  if (!btn) return;
+  if (btn.dataset.cmd) { submitCommand(btn.dataset.cmd); return; }
+  const a = btn.dataset.action;
+  if (a==='hint') submitCommand('hint');
+  else if (a==='hint-vague') submitCommand('hint vague');
+  else if (a==='hint-spoiler') submitCommand('hint spoiler');
+  else if (a==='describe') submitCommand('describe');
+  else if (a==='recap') submitCommand('recap');
+});
+
+// ---------- Send button + input ----------
+sendBtn.addEventListener('click', ()=>submitCommand());
+inputEl.addEventListener('keydown', e=>{
+  if (e.key === 'Enter') { e.preventDefault(); submitCommand(); }
+});
+
+// ---------- Top bar buttons + modal + sheet ----------
+const modal = document.getElementById('modal');
+const sheet = document.getElementById('sheet');
+function openModal(){
+  document.getElementById('apiKey').value = getKey();
+  document.getElementById('modelSel').value = getModel();
+  modal.classList.add('open');
+}
+function closeModal(){ modal.classList.remove('open'); }
+document.getElementById('modalClose').addEventListener('click', closeModal);
+document.getElementById('modalSave').addEventListener('click', ()=>{
+  localStorage.setItem('lz_key', document.getElementById('apiKey').value.trim());
+  localStorage.setItem('lz_model', document.getElementById('modelSel').value);
+  closeModal();
+  document.getElementById('footnote').textContent = 'API key saved. Tap a chip to try a hint.';
+});
+
+document.getElementById('btnMore').addEventListener('click', ()=>{
+  sheet.classList.add('open');
+});
+sheet.addEventListener('click', e=>{
+  const t = e.target.closest('.sheet-item');
+  if (!t) {
+    if (e.target === sheet) sheet.classList.remove('open');
+    return;
+  }
+  const a = t.dataset.sheet;
+  sheet.classList.remove('open');
+  if (a==='settings') openModal();
+  else if (a==='save') submitCommand('save');
+  else if (a==='load') submitCommand('restore');
+  else if (a==='restart') {
+    if (confirm('Restart the game? Your unsaved progress will be lost.')) {
+      location.reload();
+    }
+  }
+});
+
+document.getElementById('btnBack').addEventListener('click', ()=>{
+  if (history.length > 1) history.back();
+});
+
+// ---------- Boot ----------
+const loadStatus = addStatus('Loading West of House…');
+try {
+  const bytes = b64ToBytes(STORY_B64);
+  bootZmachine(bytes);
+  setTimeout(()=>loadStatus.remove(), 600);
+} catch(e){
+  addStatus('Failed to load game: ' + (e.message||e), true);
+  console.error(e);
+}
+
+// Auto-prompt for key if missing
+if (!getKey()) {
+  setTimeout(openModal, 1200);
+}
+</script>
+</body>
+</html>
