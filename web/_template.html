@@ -261,7 +261,7 @@ let pendingInput = null;   // resolver for the current read()
 let outputBuffer = '';     // accumulates print() output until next read()
 let lastRoomText = '';     // tracked from status line + last "room" output
 let statusLine = '';       // current status line (room + score/moves)
-let turnLog = [];          // [{player, game}, ...] last 12 turns for recap
+let turnLog = [];          // [{player, game}, ...] rolling buffer; last 10 sent to LLM
 
 function bootZmachine(storyBytes){
   const z = new JSZM(storyBytes);
@@ -362,7 +362,7 @@ function sendToGame(cmd){
   pendingInput = null;
   // log it
   turnLog.push({player: cmd, game: ''});
-  if (turnLog.length > 12) turnLog.shift();
+  if (turnLog.length > 15) turnLog.shift();
   // resume the VM
   resolver(cmd);
 }
@@ -454,7 +454,7 @@ function gameContext(){
   return [
     statusLine ? 'STATUS: ' + statusLine : '',
     lastRoomText ? 'CURRENT SCENE:\n' + lastRoomText : '',
-    turnLog.length ? 'RECENT TURNS:\n' + turnLog.slice(-5).map(t=>`> ${t.player}\n${(t.game||'').slice(0,200)}`).join('\n\n') : '',
+    turnLog.length ? 'RECENT TURNS:\n' + turnLog.slice(-10).map(t=>`> ${t.player}\n${(t.game||'').slice(0,200)}`).join('\n\n') : '',
   ].filter(Boolean).join('\n\n');
 }
 
