@@ -1,0 +1,6342 @@
+{
+  "game": "Zork I",
+  "source": "MITDDC/Microsoft ZIL release (1dungeon.zil + 1actions.zil), parsed",
+  "rooms": {
+    "West of House": {
+      "id": "WEST-OF-HOUSE",
+      "name": "West of House",
+      "ldesc": "",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "ONBIT",
+        "SACREDBIT"
+      ],
+      "globals": [
+        "WHITE-HOUSE",
+        "BOARD",
+        "FOREST"
+      ],
+      "exits": [
+        {
+          "dir": "north",
+          "to_id": "NORTH-OF-HOUSE",
+          "to": "North of House"
+        },
+        {
+          "dir": "south",
+          "to_id": "SOUTH-OF-HOUSE",
+          "to": "South of House"
+        },
+        {
+          "dir": "northeast",
+          "to_id": "NORTH-OF-HOUSE",
+          "to": "North of House"
+        },
+        {
+          "dir": "southeast",
+          "to_id": "SOUTH-OF-HOUSE",
+          "to": "South of House"
+        },
+        {
+          "dir": "west",
+          "to_id": "FOREST-1",
+          "to": "Forest"
+        },
+        {
+          "dir": "east",
+          "blocked": "The door is boarded and you can't remove the boards."
+        },
+        {
+          "dir": "southwest",
+          "to_id": "STONE-BARROW",
+          "condition": "WON-FLAG",
+          "to": "Stone Barrow"
+        },
+        {
+          "dir": "in",
+          "to_id": "STONE-BARROW",
+          "condition": "WON-FLAG",
+          "to": "Stone Barrow"
+        }
+      ],
+      "items": [
+        "door",
+        "small mailbox"
+      ]
+    },
+    "Stone Barrow": {
+      "id": "STONE-BARROW",
+      "name": "Stone Barrow",
+      "ldesc": "You are standing in front of a massive barrow of stone. In the east face is a huge stone door which is open. You cannot see into the dark of the tomb.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "ONBIT",
+        "SACREDBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "northeast",
+          "to_id": "WEST-OF-HOUSE",
+          "to": "West of House"
+        }
+      ],
+      "items": [
+        "stone door",
+        "stone barrow"
+      ]
+    },
+    "North of House": {
+      "id": "NORTH-OF-HOUSE",
+      "name": "North of House",
+      "ldesc": "You are facing the north side of a white house. There is no door here, and all the windows are boarded up. To the north a narrow path winds through the trees.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "ONBIT",
+        "SACREDBIT"
+      ],
+      "globals": [
+        "BOARDED-WINDOW",
+        "BOARD",
+        "WHITE-HOUSE",
+        "FOREST"
+      ],
+      "exits": [
+        {
+          "dir": "southwest",
+          "to_id": "WEST-OF-HOUSE",
+          "to": "West of House"
+        },
+        {
+          "dir": "southeast",
+          "to_id": "EAST-OF-HOUSE",
+          "to": "Behind House"
+        },
+        {
+          "dir": "west",
+          "to_id": "WEST-OF-HOUSE",
+          "to": "West of House"
+        },
+        {
+          "dir": "east",
+          "to_id": "EAST-OF-HOUSE",
+          "to": "Behind House"
+        },
+        {
+          "dir": "north",
+          "to_id": "PATH",
+          "to": "Forest Path"
+        },
+        {
+          "dir": "south",
+          "blocked": "The windows are all boarded."
+        }
+      ],
+      "items": []
+    },
+    "South of House": {
+      "id": "SOUTH-OF-HOUSE",
+      "name": "South of House",
+      "ldesc": "You are facing the south side of a white house. There is no door here, and all the windows are boarded.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "ONBIT",
+        "SACREDBIT"
+      ],
+      "globals": [
+        "BOARDED-WINDOW",
+        "BOARD",
+        "WHITE-HOUSE",
+        "FOREST"
+      ],
+      "exits": [
+        {
+          "dir": "west",
+          "to_id": "WEST-OF-HOUSE",
+          "to": "West of House"
+        },
+        {
+          "dir": "east",
+          "to_id": "EAST-OF-HOUSE",
+          "to": "Behind House"
+        },
+        {
+          "dir": "northeast",
+          "to_id": "EAST-OF-HOUSE",
+          "to": "Behind House"
+        },
+        {
+          "dir": "northwest",
+          "to_id": "WEST-OF-HOUSE",
+          "to": "West of House"
+        },
+        {
+          "dir": "south",
+          "to_id": "FOREST-3",
+          "to": "Forest"
+        },
+        {
+          "dir": "north",
+          "blocked": "The windows are all boarded."
+        }
+      ],
+      "items": []
+    },
+    "Behind House": {
+      "id": "EAST-OF-HOUSE",
+      "name": "Behind House",
+      "ldesc": "",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "ONBIT",
+        "SACREDBIT"
+      ],
+      "globals": [
+        "WHITE-HOUSE",
+        "KITCHEN-WINDOW",
+        "FOREST"
+      ],
+      "exits": [
+        {
+          "dir": "north",
+          "to_id": "NORTH-OF-HOUSE",
+          "to": "North of House"
+        },
+        {
+          "dir": "south",
+          "to_id": "SOUTH-OF-HOUSE",
+          "to": "South of House"
+        },
+        {
+          "dir": "southwest",
+          "to_id": "SOUTH-OF-HOUSE",
+          "to": "South of House"
+        },
+        {
+          "dir": "northwest",
+          "to_id": "NORTH-OF-HOUSE",
+          "to": "North of House"
+        },
+        {
+          "dir": "east",
+          "to_id": "CLEARING",
+          "to": "Clearing"
+        },
+        {
+          "dir": "west",
+          "to_id": "KITCHEN",
+          "condition": "KITCHEN-WINDOW IS OPEN",
+          "to": "Kitchen"
+        },
+        {
+          "dir": "in",
+          "to_id": "KITCHEN",
+          "condition": "KITCHEN-WINDOW IS OPEN",
+          "to": "Kitchen"
+        }
+      ],
+      "items": []
+    },
+    "Forest": {
+      "id": "FOREST-1",
+      "name": "Forest",
+      "ldesc": "This is a forest, with trees in all directions. To the east, there appears to be sunlight.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "ONBIT",
+        "SACREDBIT"
+      ],
+      "globals": [
+        "TREE",
+        "SONGBIRD",
+        "WHITE-HOUSE",
+        "FOREST"
+      ],
+      "exits": [
+        {
+          "dir": "up",
+          "blocked": "There is no tree here suitable for climbing."
+        },
+        {
+          "dir": "north",
+          "to_id": "GRATING-CLEARING",
+          "to": "Clearing"
+        },
+        {
+          "dir": "east",
+          "to_id": "PATH",
+          "to": "Forest Path"
+        },
+        {
+          "dir": "south",
+          "to_id": "FOREST-3",
+          "to": "Forest"
+        },
+        {
+          "dir": "west",
+          "blocked": "You would need a machete to go further west."
+        }
+      ],
+      "items": [
+        "mountain range"
+      ]
+    },
+    "Forest (FOREST-2)": {
+      "id": "FOREST-2",
+      "name": "Forest",
+      "ldesc": "This is a dimly lit forest, with large trees all around.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "ONBIT",
+        "SACREDBIT"
+      ],
+      "globals": [
+        "TREE",
+        "SONGBIRD",
+        "WHITE-HOUSE",
+        "FOREST"
+      ],
+      "exits": [
+        {
+          "dir": "up",
+          "blocked": "There is no tree here suitable for climbing."
+        },
+        {
+          "dir": "north",
+          "blocked": "The forest becomes impenetrable to the north."
+        },
+        {
+          "dir": "east",
+          "to_id": "MOUNTAINS",
+          "to": "Forest"
+        },
+        {
+          "dir": "south",
+          "to_id": "CLEARING",
+          "to": "Clearing"
+        },
+        {
+          "dir": "west",
+          "to_id": "PATH",
+          "to": "Forest Path"
+        }
+      ],
+      "items": [
+        "mountain range"
+      ]
+    },
+    "Forest (MOUNTAINS)": {
+      "id": "MOUNTAINS",
+      "name": "Forest",
+      "ldesc": "The forest thins out, revealing impassable mountains.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "ONBIT",
+        "SACREDBIT"
+      ],
+      "globals": [
+        "TREE",
+        "WHITE-HOUSE"
+      ],
+      "exits": [
+        {
+          "dir": "up",
+          "blocked": "The mountains are impassable."
+        },
+        {
+          "dir": "north",
+          "to_id": "FOREST-2",
+          "to": "Forest"
+        },
+        {
+          "dir": "east",
+          "blocked": "The mountains are impassable."
+        },
+        {
+          "dir": "south",
+          "to_id": "FOREST-2",
+          "to": "Forest"
+        },
+        {
+          "dir": "west",
+          "to_id": "FOREST-2",
+          "to": "Forest"
+        }
+      ],
+      "items": [
+        "mountain range"
+      ]
+    },
+    "Forest (FOREST-3)": {
+      "id": "FOREST-3",
+      "name": "Forest",
+      "ldesc": "This is a dimly lit forest, with large trees all around.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "ONBIT",
+        "SACREDBIT"
+      ],
+      "globals": [
+        "TREE",
+        "SONGBIRD",
+        "WHITE-HOUSE",
+        "FOREST"
+      ],
+      "exits": [
+        {
+          "dir": "up",
+          "blocked": "There is no tree here suitable for climbing."
+        },
+        {
+          "dir": "north",
+          "to_id": "CLEARING",
+          "to": "Clearing"
+        },
+        {
+          "dir": "east",
+          "blocked": "The rank undergrowth prevents eastward movement."
+        },
+        {
+          "dir": "south",
+          "blocked": "Storm-tossed trees block your way."
+        },
+        {
+          "dir": "west",
+          "to_id": "FOREST-1",
+          "to": "Forest"
+        },
+        {
+          "dir": "northwest",
+          "to_id": "SOUTH-OF-HOUSE",
+          "to": "South of House"
+        }
+      ],
+      "items": [
+        "mountain range"
+      ]
+    },
+    "Forest Path": {
+      "id": "PATH",
+      "name": "Forest Path",
+      "ldesc": "This is a path winding through a dimly lit forest. The path heads north-south here. One particularly large tree with some low branches stands at the edge of the path.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "ONBIT",
+        "SACREDBIT"
+      ],
+      "globals": [
+        "TREE",
+        "SONGBIRD",
+        "WHITE-HOUSE",
+        "FOREST"
+      ],
+      "exits": [
+        {
+          "dir": "up",
+          "to_id": "UP-A-TREE",
+          "to": "Up a Tree"
+        },
+        {
+          "dir": "north",
+          "to_id": "GRATING-CLEARING",
+          "to": "Clearing"
+        },
+        {
+          "dir": "east",
+          "to_id": "FOREST-2",
+          "to": "Forest"
+        },
+        {
+          "dir": "south",
+          "to_id": "NORTH-OF-HOUSE",
+          "to": "North of House"
+        },
+        {
+          "dir": "west",
+          "to_id": "FOREST-1",
+          "to": "Forest"
+        }
+      ],
+      "items": []
+    },
+    "Up a Tree": {
+      "id": "UP-A-TREE",
+      "name": "Up a Tree",
+      "ldesc": "",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "ONBIT",
+        "SACREDBIT"
+      ],
+      "globals": [
+        "TREE",
+        "FOREST",
+        "SONGBIRD",
+        "WHITE-HOUSE"
+      ],
+      "exits": [
+        {
+          "dir": "down",
+          "to_id": "PATH",
+          "to": "Forest Path"
+        },
+        {
+          "dir": "up",
+          "blocked": "You cannot climb any higher."
+        }
+      ],
+      "items": [
+        "bird's nest"
+      ]
+    },
+    "Clearing": {
+      "id": "GRATING-CLEARING",
+      "name": "Clearing",
+      "ldesc": "",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "ONBIT",
+        "SACREDBIT"
+      ],
+      "globals": [
+        "WHITE-HOUSE",
+        "GRATE"
+      ],
+      "exits": [
+        {
+          "dir": "north",
+          "blocked": "The forest becomes impenetrable to the north."
+        },
+        {
+          "dir": "east",
+          "to_id": "FOREST-2",
+          "to": "Forest"
+        },
+        {
+          "dir": "west",
+          "to_id": "FOREST-1",
+          "to": "Forest"
+        },
+        {
+          "dir": "south",
+          "to_id": "PATH",
+          "to": "Forest Path"
+        },
+        {
+          "dir": "down",
+          "per_routine": "GRATING-EXIT",
+          "note": "conditional / scripted exit"
+        }
+      ],
+      "items": [
+        "pile of leaves"
+      ]
+    },
+    "Clearing (CLEARING)": {
+      "id": "CLEARING",
+      "name": "Clearing",
+      "ldesc": "You are in a small clearing in a well marked forest path that extends to the east and west.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "ONBIT",
+        "SACREDBIT"
+      ],
+      "globals": [
+        "TREE",
+        "SONGBIRD",
+        "WHITE-HOUSE",
+        "FOREST"
+      ],
+      "exits": [
+        {
+          "dir": "up",
+          "blocked": "There is no tree here suitable for climbing."
+        },
+        {
+          "dir": "east",
+          "to_id": "CANYON-VIEW",
+          "to": "Canyon View"
+        },
+        {
+          "dir": "north",
+          "to_id": "FOREST-2",
+          "to": "Forest"
+        },
+        {
+          "dir": "south",
+          "to_id": "FOREST-3",
+          "to": "Forest"
+        },
+        {
+          "dir": "west",
+          "to_id": "EAST-OF-HOUSE",
+          "to": "Behind House"
+        }
+      ],
+      "items": [
+        "pile of leaves"
+      ]
+    },
+    "Kitchen": {
+      "id": "KITCHEN",
+      "name": "Kitchen",
+      "ldesc": "",
+      "value": 10,
+      "flags": [
+        "RLANDBIT",
+        "ONBIT",
+        "SACREDBIT"
+      ],
+      "globals": [
+        "KITCHEN-WINDOW",
+        "CHIMNEY",
+        "STAIRS"
+      ],
+      "exits": [
+        {
+          "dir": "east",
+          "to_id": "EAST-OF-HOUSE",
+          "condition": "KITCHEN-WINDOW IS OPEN",
+          "to": "Behind House"
+        },
+        {
+          "dir": "west",
+          "to_id": "LIVING-ROOM",
+          "to": "Living Room"
+        },
+        {
+          "dir": "out",
+          "to_id": "EAST-OF-HOUSE",
+          "condition": "KITCHEN-WINDOW IS OPEN",
+          "to": "Behind House"
+        },
+        {
+          "dir": "up",
+          "to_id": "ATTIC",
+          "to": "Attic"
+        },
+        {
+          "dir": "down",
+          "to_id": "STUDIO",
+          "condition": "FALSE-FLAG",
+          "else_blocked": "Only Santa Claus climbs down chimneys.",
+          "to": "Studio"
+        }
+      ],
+      "items": [
+        "kitchen table"
+      ]
+    },
+    "Attic": {
+      "id": "ATTIC",
+      "name": "Attic",
+      "ldesc": "This is the attic. The only exit is a stairway leading down.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "SACREDBIT"
+      ],
+      "globals": [
+        "STAIRS"
+      ],
+      "exits": [
+        {
+          "dir": "down",
+          "to_id": "KITCHEN",
+          "to": "Kitchen"
+        }
+      ],
+      "items": [
+        "table",
+        "rope"
+      ]
+    },
+    "Living Room": {
+      "id": "LIVING-ROOM",
+      "name": "Living Room",
+      "ldesc": "",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "ONBIT",
+        "SACREDBIT"
+      ],
+      "globals": [
+        "STAIRS"
+      ],
+      "exits": [
+        {
+          "dir": "east",
+          "to_id": "KITCHEN",
+          "to": "Kitchen"
+        },
+        {
+          "dir": "west",
+          "to_id": "STRANGE-PASSAGE",
+          "condition": "MAGIC-FLAG",
+          "else_blocked": "The door is nailed shut.",
+          "to": "Strange Passage"
+        },
+        {
+          "dir": "down",
+          "per_routine": "TRAP-DOOR-EXIT",
+          "note": "conditional / scripted exit"
+        }
+      ],
+      "items": [
+        "trophy case",
+        "carpet",
+        "trap door",
+        "brass lantern",
+        "wooden door",
+        "sword"
+      ]
+    },
+    "Cellar": {
+      "id": "CELLAR",
+      "name": "Cellar",
+      "ldesc": "",
+      "value": 25,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [
+        "TRAP-DOOR",
+        "SLIDE",
+        "STAIRS"
+      ],
+      "exits": [
+        {
+          "dir": "north",
+          "to_id": "TROLL-ROOM",
+          "to": "The Troll Room"
+        },
+        {
+          "dir": "south",
+          "to_id": "EAST-OF-CHASM",
+          "to": "East of Chasm"
+        },
+        {
+          "dir": "up",
+          "to_id": "LIVING-ROOM",
+          "condition": "TRAP-DOOR IS OPEN",
+          "to": "Living Room"
+        },
+        {
+          "dir": "west",
+          "blocked": "You try to ascend the ramp, but it is impossible, and you slide back down."
+        }
+      ],
+      "items": []
+    },
+    "The Troll Room": {
+      "id": "TROLL-ROOM",
+      "name": "The Troll Room",
+      "ldesc": "This is a small room with passages to the east and south and a forbidding hole leading west. Bloodstains and deep scratches (perhaps made by an axe) mar the walls.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "south",
+          "to_id": "CELLAR",
+          "to": "Cellar"
+        },
+        {
+          "dir": "east",
+          "to_id": "EW-PASSAGE",
+          "condition": "TROLL-FLAG",
+          "else_blocked": "The troll fends you off with a menacing gesture.",
+          "to": "East-West Passage"
+        },
+        {
+          "dir": "west",
+          "to_id": "MAZE-1",
+          "condition": "TROLL-FLAG",
+          "else_blocked": "The troll fends you off with a menacing gesture.",
+          "to": "Maze"
+        }
+      ],
+      "items": [
+        "troll"
+      ]
+    },
+    "East of Chasm": {
+      "id": "EAST-OF-CHASM",
+      "name": "East of Chasm",
+      "ldesc": "You are on the east edge of a chasm, the bottom of which cannot be seen. A narrow passage goes north, and the path you are on continues to the east.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "north",
+          "to_id": "CELLAR",
+          "to": "Cellar"
+        },
+        {
+          "dir": "east",
+          "to_id": "GALLERY",
+          "to": "Gallery"
+        },
+        {
+          "dir": "down",
+          "blocked": "The chasm probably leads straight to the infernal regions."
+        }
+      ],
+      "items": []
+    },
+    "Gallery": {
+      "id": "GALLERY",
+      "name": "Gallery",
+      "ldesc": "This is an art gallery. Most of the paintings have been stolen by vandals with exceptional taste. The vandals left through either the north or west exits.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "ONBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "west",
+          "to_id": "EAST-OF-CHASM",
+          "to": "East of Chasm"
+        },
+        {
+          "dir": "north",
+          "to_id": "STUDIO",
+          "to": "Studio"
+        }
+      ],
+      "items": [
+        "painting"
+      ]
+    },
+    "Studio": {
+      "id": "STUDIO",
+      "name": "Studio",
+      "ldesc": "This appears to have been an artist's studio. The walls and floors are splattered with paints of 69 different colors. Strangely enough, nothing of value is hanging here. At the south end of the room is an open door (also covered with paint). A dark and narrow chimney leads up from a fireplace; although you might be able to get up it, it seems unlikely you could get back down.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [
+        "CHIMNEY"
+      ],
+      "exits": [
+        {
+          "dir": "south",
+          "to_id": "GALLERY",
+          "to": "Gallery"
+        },
+        {
+          "dir": "up",
+          "per_routine": "UP-CHIMNEY-FUNCTION",
+          "note": "conditional / scripted exit"
+        }
+      ],
+      "items": [
+        "ZORK owner's manual"
+      ]
+    },
+    "Maze": {
+      "id": "MAZE-1",
+      "name": "Maze",
+      "ldesc": "This is part of a maze of twisty little passages, all alike.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "MAZEBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "east",
+          "to_id": "TROLL-ROOM",
+          "to": "The Troll Room"
+        },
+        {
+          "dir": "north",
+          "to_id": "MAZE-1",
+          "to": "Maze"
+        },
+        {
+          "dir": "south",
+          "to_id": "MAZE-2",
+          "to": "Maze"
+        },
+        {
+          "dir": "west",
+          "to_id": "MAZE-4",
+          "to": "Maze"
+        }
+      ],
+      "items": [
+        "skeleton",
+        "burned-out lantern",
+        "leather bag of coins",
+        "rusty knife",
+        "skeleton key"
+      ]
+    },
+    "Maze (MAZE-2)": {
+      "id": "MAZE-2",
+      "name": "Maze",
+      "ldesc": "This is part of a maze of twisty little passages, all alike.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "MAZEBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "south",
+          "to_id": "MAZE-1",
+          "to": "Maze"
+        },
+        {
+          "dir": "down",
+          "per_routine": "MAZE-DIODES",
+          "note": "conditional / scripted exit"
+        },
+        {
+          "dir": "east",
+          "to_id": "MAZE-3",
+          "to": "Maze"
+        }
+      ],
+      "items": [
+        "skeleton",
+        "burned-out lantern",
+        "leather bag of coins",
+        "rusty knife",
+        "skeleton key"
+      ]
+    },
+    "Maze (MAZE-3)": {
+      "id": "MAZE-3",
+      "name": "Maze",
+      "ldesc": "This is part of a maze of twisty little passages, all alike.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "MAZEBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "west",
+          "to_id": "MAZE-2",
+          "to": "Maze"
+        },
+        {
+          "dir": "north",
+          "to_id": "MAZE-4",
+          "to": "Maze"
+        },
+        {
+          "dir": "up",
+          "to_id": "MAZE-5",
+          "to": "Maze"
+        }
+      ],
+      "items": [
+        "skeleton",
+        "burned-out lantern",
+        "leather bag of coins",
+        "rusty knife",
+        "skeleton key"
+      ]
+    },
+    "Maze (MAZE-4)": {
+      "id": "MAZE-4",
+      "name": "Maze",
+      "ldesc": "This is part of a maze of twisty little passages, all alike.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "MAZEBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "west",
+          "to_id": "MAZE-3",
+          "to": "Maze"
+        },
+        {
+          "dir": "north",
+          "to_id": "MAZE-1",
+          "to": "Maze"
+        },
+        {
+          "dir": "east",
+          "to_id": "DEAD-END-1",
+          "to": "Dead End"
+        }
+      ],
+      "items": [
+        "skeleton",
+        "burned-out lantern",
+        "leather bag of coins",
+        "rusty knife",
+        "skeleton key"
+      ]
+    },
+    "Dead End": {
+      "id": "DEAD-END-1",
+      "name": "Dead End",
+      "ldesc": "You have come to a dead end in the maze.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "MAZEBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "south",
+          "to_id": "MAZE-4",
+          "to": "Maze"
+        }
+      ],
+      "items": [
+        "small pile of coal"
+      ]
+    },
+    "Maze (MAZE-5)": {
+      "id": "MAZE-5",
+      "name": "Maze",
+      "ldesc": "This is part of a maze of twisty little passages, all alike. A skeleton, probably the remains of a luckless adventurer, lies here.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "MAZEBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "east",
+          "to_id": "DEAD-END-2",
+          "to": "Dead End"
+        },
+        {
+          "dir": "north",
+          "to_id": "MAZE-3",
+          "to": "Maze"
+        },
+        {
+          "dir": "southwest",
+          "to_id": "MAZE-6",
+          "to": "Maze"
+        }
+      ],
+      "items": [
+        "skeleton",
+        "burned-out lantern",
+        "leather bag of coins",
+        "rusty knife",
+        "skeleton key"
+      ]
+    },
+    "Dead End (DEAD-END-2)": {
+      "id": "DEAD-END-2",
+      "name": "Dead End",
+      "ldesc": "You have come to a dead end in the maze.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "MAZEBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "west",
+          "to_id": "MAZE-5",
+          "to": "Maze"
+        }
+      ],
+      "items": [
+        "small pile of coal"
+      ]
+    },
+    "Maze (MAZE-6)": {
+      "id": "MAZE-6",
+      "name": "Maze",
+      "ldesc": "This is part of a maze of twisty little passages, all alike.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "MAZEBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "down",
+          "to_id": "MAZE-5",
+          "to": "Maze"
+        },
+        {
+          "dir": "east",
+          "to_id": "MAZE-7",
+          "to": "Maze"
+        },
+        {
+          "dir": "west",
+          "to_id": "MAZE-6",
+          "to": "Maze"
+        },
+        {
+          "dir": "up",
+          "to_id": "MAZE-9",
+          "to": "Maze"
+        }
+      ],
+      "items": [
+        "skeleton",
+        "burned-out lantern",
+        "leather bag of coins",
+        "rusty knife",
+        "skeleton key"
+      ]
+    },
+    "Maze (MAZE-7)": {
+      "id": "MAZE-7",
+      "name": "Maze",
+      "ldesc": "This is part of a maze of twisty little passages, all alike.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "MAZEBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "up",
+          "to_id": "MAZE-14",
+          "to": "Maze"
+        },
+        {
+          "dir": "west",
+          "to_id": "MAZE-6",
+          "to": "Maze"
+        },
+        {
+          "dir": "down",
+          "per_routine": "MAZE-DIODES",
+          "note": "conditional / scripted exit"
+        },
+        {
+          "dir": "east",
+          "to_id": "MAZE-8",
+          "to": "Maze"
+        },
+        {
+          "dir": "south",
+          "to_id": "MAZE-15",
+          "to": "Maze"
+        }
+      ],
+      "items": [
+        "skeleton",
+        "burned-out lantern",
+        "leather bag of coins",
+        "rusty knife",
+        "skeleton key"
+      ]
+    },
+    "Maze (MAZE-8)": {
+      "id": "MAZE-8",
+      "name": "Maze",
+      "ldesc": "This is part of a maze of twisty little passages, all alike.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "MAZEBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "northeast",
+          "to_id": "MAZE-7",
+          "to": "Maze"
+        },
+        {
+          "dir": "west",
+          "to_id": "MAZE-8",
+          "to": "Maze"
+        },
+        {
+          "dir": "southeast",
+          "to_id": "DEAD-END-3",
+          "to": "Dead End"
+        }
+      ],
+      "items": [
+        "skeleton",
+        "burned-out lantern",
+        "leather bag of coins",
+        "rusty knife",
+        "skeleton key"
+      ]
+    },
+    "Dead End (DEAD-END-3)": {
+      "id": "DEAD-END-3",
+      "name": "Dead End",
+      "ldesc": "You have come to a dead end in the maze.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "MAZEBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "north",
+          "to_id": "MAZE-8",
+          "to": "Maze"
+        }
+      ],
+      "items": [
+        "small pile of coal"
+      ]
+    },
+    "Maze (MAZE-9)": {
+      "id": "MAZE-9",
+      "name": "Maze",
+      "ldesc": "This is part of a maze of twisty little passages, all alike.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "MAZEBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "north",
+          "to_id": "MAZE-6",
+          "to": "Maze"
+        },
+        {
+          "dir": "down",
+          "per_routine": "MAZE-DIODES",
+          "note": "conditional / scripted exit"
+        },
+        {
+          "dir": "east",
+          "to_id": "MAZE-10",
+          "to": "Maze"
+        },
+        {
+          "dir": "south",
+          "to_id": "MAZE-13",
+          "to": "Maze"
+        },
+        {
+          "dir": "west",
+          "to_id": "MAZE-12",
+          "to": "Maze"
+        },
+        {
+          "dir": "northwest",
+          "to_id": "MAZE-9",
+          "to": "Maze"
+        }
+      ],
+      "items": [
+        "skeleton",
+        "burned-out lantern",
+        "leather bag of coins",
+        "rusty knife",
+        "skeleton key"
+      ]
+    },
+    "Maze (MAZE-10)": {
+      "id": "MAZE-10",
+      "name": "Maze",
+      "ldesc": "This is part of a maze of twisty little passages, all alike.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "MAZEBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "east",
+          "to_id": "MAZE-9",
+          "to": "Maze"
+        },
+        {
+          "dir": "west",
+          "to_id": "MAZE-13",
+          "to": "Maze"
+        },
+        {
+          "dir": "up",
+          "to_id": "MAZE-11",
+          "to": "Maze"
+        }
+      ],
+      "items": [
+        "skeleton",
+        "burned-out lantern",
+        "leather bag of coins",
+        "rusty knife",
+        "skeleton key"
+      ]
+    },
+    "Maze (MAZE-11)": {
+      "id": "MAZE-11",
+      "name": "Maze",
+      "ldesc": "This is part of a maze of twisty little passages, all alike.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "MAZEBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "northeast",
+          "to_id": "GRATING-ROOM",
+          "to": "Grating Room"
+        },
+        {
+          "dir": "down",
+          "to_id": "MAZE-10",
+          "to": "Maze"
+        },
+        {
+          "dir": "northwest",
+          "to_id": "MAZE-13",
+          "to": "Maze"
+        },
+        {
+          "dir": "southwest",
+          "to_id": "MAZE-12",
+          "to": "Maze"
+        }
+      ],
+      "items": [
+        "skeleton",
+        "burned-out lantern",
+        "leather bag of coins",
+        "rusty knife",
+        "skeleton key"
+      ]
+    },
+    "Grating Room": {
+      "id": "GRATING-ROOM",
+      "name": "Grating Room",
+      "ldesc": "",
+      "value": 0,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [
+        "GRATE"
+      ],
+      "exits": [
+        {
+          "dir": "southwest",
+          "to_id": "MAZE-11",
+          "to": "Maze"
+        },
+        {
+          "dir": "up",
+          "to_id": "GRATING-CLEARING",
+          "condition": "GRATE IS OPEN",
+          "else_blocked": "The grating is closed.",
+          "to": "Clearing"
+        }
+      ],
+      "items": []
+    },
+    "Maze (MAZE-12)": {
+      "id": "MAZE-12",
+      "name": "Maze",
+      "ldesc": "This is part of a maze of twisty little passages, all alike.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "MAZEBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "down",
+          "per_routine": "MAZE-DIODES",
+          "note": "conditional / scripted exit"
+        },
+        {
+          "dir": "southwest",
+          "to_id": "MAZE-11",
+          "to": "Maze"
+        },
+        {
+          "dir": "east",
+          "to_id": "MAZE-13",
+          "to": "Maze"
+        },
+        {
+          "dir": "up",
+          "to_id": "MAZE-9",
+          "to": "Maze"
+        },
+        {
+          "dir": "north",
+          "to_id": "DEAD-END-4",
+          "to": "Dead End"
+        }
+      ],
+      "items": [
+        "skeleton",
+        "burned-out lantern",
+        "leather bag of coins",
+        "rusty knife",
+        "skeleton key"
+      ]
+    },
+    "Dead End (DEAD-END-4)": {
+      "id": "DEAD-END-4",
+      "name": "Dead End",
+      "ldesc": "You have come to a dead end in the maze.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "MAZEBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "south",
+          "to_id": "MAZE-12",
+          "to": "Maze"
+        }
+      ],
+      "items": [
+        "small pile of coal"
+      ]
+    },
+    "Maze (MAZE-13)": {
+      "id": "MAZE-13",
+      "name": "Maze",
+      "ldesc": "This is part of a maze of twisty little passages, all alike.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "MAZEBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "east",
+          "to_id": "MAZE-9",
+          "to": "Maze"
+        },
+        {
+          "dir": "down",
+          "to_id": "MAZE-12",
+          "to": "Maze"
+        },
+        {
+          "dir": "south",
+          "to_id": "MAZE-10",
+          "to": "Maze"
+        },
+        {
+          "dir": "west",
+          "to_id": "MAZE-11",
+          "to": "Maze"
+        }
+      ],
+      "items": [
+        "skeleton",
+        "burned-out lantern",
+        "leather bag of coins",
+        "rusty knife",
+        "skeleton key"
+      ]
+    },
+    "Maze (MAZE-14)": {
+      "id": "MAZE-14",
+      "name": "Maze",
+      "ldesc": "This is part of a maze of twisty little passages, all alike.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "MAZEBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "west",
+          "to_id": "MAZE-15",
+          "to": "Maze"
+        },
+        {
+          "dir": "northwest",
+          "to_id": "MAZE-14",
+          "to": "Maze"
+        },
+        {
+          "dir": "northeast",
+          "to_id": "MAZE-7",
+          "to": "Maze"
+        },
+        {
+          "dir": "south",
+          "to_id": "MAZE-7",
+          "to": "Maze"
+        }
+      ],
+      "items": [
+        "skeleton",
+        "burned-out lantern",
+        "leather bag of coins",
+        "rusty knife",
+        "skeleton key"
+      ]
+    },
+    "Maze (MAZE-15)": {
+      "id": "MAZE-15",
+      "name": "Maze",
+      "ldesc": "This is part of a maze of twisty little passages, all alike.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "MAZEBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "west",
+          "to_id": "MAZE-14",
+          "to": "Maze"
+        },
+        {
+          "dir": "south",
+          "to_id": "MAZE-7",
+          "to": "Maze"
+        },
+        {
+          "dir": "southeast",
+          "to_id": "CYCLOPS-ROOM",
+          "to": "Cyclops Room"
+        }
+      ],
+      "items": [
+        "skeleton",
+        "burned-out lantern",
+        "leather bag of coins",
+        "rusty knife",
+        "skeleton key"
+      ]
+    },
+    "Cyclops Room": {
+      "id": "CYCLOPS-ROOM",
+      "name": "Cyclops Room",
+      "ldesc": "",
+      "value": 0,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [
+        "STAIRS"
+      ],
+      "exits": [
+        {
+          "dir": "northwest",
+          "to_id": "MAZE-15",
+          "to": "Maze"
+        },
+        {
+          "dir": "east",
+          "to_id": "STRANGE-PASSAGE",
+          "condition": "MAGIC-FLAG",
+          "else_blocked": "The east wall is solid rock.",
+          "to": "Strange Passage"
+        },
+        {
+          "dir": "up",
+          "to_id": "TREASURE-ROOM",
+          "condition": "CYCLOPS-FLAG",
+          "else_blocked": "The cyclops doesn't look like he'll let you past.",
+          "to": "Treasure Room"
+        }
+      ],
+      "items": [
+        "cyclops"
+      ]
+    },
+    "Strange Passage": {
+      "id": "STRANGE-PASSAGE",
+      "name": "Strange Passage",
+      "ldesc": "This is a long passage. To the west is one entrance. On the east there is an old wooden door, with a large opening in it (about cyclops sized).",
+      "value": 0,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "west",
+          "to_id": "CYCLOPS-ROOM",
+          "to": "Cyclops Room"
+        },
+        {
+          "dir": "in",
+          "to_id": "CYCLOPS-ROOM",
+          "to": "Cyclops Room"
+        },
+        {
+          "dir": "east",
+          "to_id": "LIVING-ROOM",
+          "to": "Living Room"
+        }
+      ],
+      "items": []
+    },
+    "Treasure Room": {
+      "id": "TREASURE-ROOM",
+      "name": "Treasure Room",
+      "ldesc": "This is a large room, whose east wall is solid granite. A number of discarded bags, which crumble at your touch, are scattered about on the floor. There is an exit down a staircase.",
+      "value": 25,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [
+        "STAIRS"
+      ],
+      "exits": [
+        {
+          "dir": "down",
+          "to_id": "CYCLOPS-ROOM",
+          "to": "Cyclops Room"
+        }
+      ],
+      "items": [
+        "chalice"
+      ]
+    },
+    "Reservoir South": {
+      "id": "RESERVOIR-SOUTH",
+      "name": "Reservoir South",
+      "ldesc": "",
+      "value": 0,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [
+        "GLOBAL-WATER"
+      ],
+      "exits": [
+        {
+          "dir": "southeast",
+          "to_id": "DEEP-CANYON",
+          "to": "Deep Canyon"
+        },
+        {
+          "dir": "southwest",
+          "to_id": "CHASM-ROOM",
+          "to": "Chasm"
+        },
+        {
+          "dir": "east",
+          "to_id": "DAM-ROOM",
+          "to": "Dam"
+        },
+        {
+          "dir": "west",
+          "to_id": "STREAM-VIEW",
+          "to": "Stream View"
+        },
+        {
+          "dir": "north",
+          "to_id": "RESERVOIR",
+          "condition": "LOW-TIDE",
+          "else_blocked": "You would drown.",
+          "to": "Reservoir"
+        }
+      ],
+      "items": []
+    },
+    "Reservoir": {
+      "id": "RESERVOIR",
+      "name": "Reservoir",
+      "ldesc": "",
+      "value": 0,
+      "flags": [
+        "NONLANDBIT"
+      ],
+      "globals": [
+        "GLOBAL-WATER"
+      ],
+      "exits": [
+        {
+          "dir": "north",
+          "to_id": "RESERVOIR-NORTH",
+          "to": "Reservoir North"
+        },
+        {
+          "dir": "south",
+          "to_id": "RESERVOIR-SOUTH",
+          "to": "Reservoir South"
+        },
+        {
+          "dir": "up",
+          "to_id": "IN-STREAM",
+          "to": "Stream"
+        },
+        {
+          "dir": "west",
+          "to_id": "IN-STREAM",
+          "to": "Stream"
+        },
+        {
+          "dir": "down",
+          "blocked": "The dam blocks your way."
+        }
+      ],
+      "items": [
+        "trunk of jewels"
+      ]
+    },
+    "Reservoir North": {
+      "id": "RESERVOIR-NORTH",
+      "name": "Reservoir North",
+      "ldesc": "",
+      "value": 0,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [
+        "GLOBAL-WATER",
+        "STAIRS"
+      ],
+      "exits": [
+        {
+          "dir": "north",
+          "to_id": "ATLANTIS-ROOM",
+          "to": "Atlantis Room"
+        },
+        {
+          "dir": "south",
+          "to_id": "RESERVOIR",
+          "condition": "LOW-TIDE",
+          "else_blocked": "You would drown.",
+          "to": "Reservoir"
+        }
+      ],
+      "items": [
+        "hand-held air pump"
+      ]
+    },
+    "Stream View": {
+      "id": "STREAM-VIEW",
+      "name": "Stream View",
+      "ldesc": "You are standing on a path beside a gently flowing stream. The path follows the stream, which flows from west to east.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [
+        "GLOBAL-WATER"
+      ],
+      "exits": [
+        {
+          "dir": "east",
+          "to_id": "RESERVOIR-SOUTH",
+          "to": "Reservoir South"
+        },
+        {
+          "dir": "west",
+          "blocked": "The stream emerges from a spot too small for you to enter."
+        }
+      ],
+      "items": []
+    },
+    "Stream": {
+      "id": "IN-STREAM",
+      "name": "Stream",
+      "ldesc": "You are on the gently flowing stream. The upstream route is too narrow to navigate, and the downstream route is invisible due to twisting walls. There is a narrow beach to land on.",
+      "value": 0,
+      "flags": [
+        "NONLANDBIT"
+      ],
+      "globals": [
+        "GLOBAL-WATER"
+      ],
+      "exits": [
+        {
+          "dir": "up",
+          "blocked": "The channel is too narrow."
+        },
+        {
+          "dir": "west",
+          "blocked": "The channel is too narrow."
+        },
+        {
+          "dir": "land",
+          "to_id": "STREAM-VIEW",
+          "to": "Stream View"
+        },
+        {
+          "dir": "down",
+          "to_id": "RESERVOIR",
+          "to": "Reservoir"
+        },
+        {
+          "dir": "east",
+          "to_id": "RESERVOIR",
+          "to": "Reservoir"
+        }
+      ],
+      "items": []
+    },
+    "Mirror Room": {
+      "id": "MIRROR-ROOM-1",
+      "name": "Mirror Room",
+      "ldesc": "",
+      "value": 0,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "north",
+          "to_id": "COLD-PASSAGE",
+          "to": "Cold Passage"
+        },
+        {
+          "dir": "west",
+          "to_id": "TWISTING-PASSAGE",
+          "to": "Twisting Passage"
+        },
+        {
+          "dir": "east",
+          "to_id": "SMALL-CAVE",
+          "to": "Cave"
+        }
+      ],
+      "items": [
+        "mirror",
+        "mirror"
+      ]
+    },
+    "Mirror Room (MIRROR-ROOM-2)": {
+      "id": "MIRROR-ROOM-2",
+      "name": "Mirror Room",
+      "ldesc": "",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "ONBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "west",
+          "to_id": "WINDING-PASSAGE",
+          "to": "Winding Passage"
+        },
+        {
+          "dir": "north",
+          "to_id": "NARROW-PASSAGE",
+          "to": "Narrow Passage"
+        },
+        {
+          "dir": "east",
+          "to_id": "TINY-CAVE",
+          "to": "Cave"
+        }
+      ],
+      "items": [
+        "mirror",
+        "mirror"
+      ]
+    },
+    "Cave": {
+      "id": "SMALL-CAVE",
+      "name": "Cave",
+      "ldesc": "This is a tiny cave with entrances west and north, and a staircase leading down.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [
+        "STAIRS"
+      ],
+      "exits": [
+        {
+          "dir": "north",
+          "to_id": "MIRROR-ROOM-1",
+          "to": "Mirror Room"
+        },
+        {
+          "dir": "down",
+          "to_id": "ATLANTIS-ROOM",
+          "to": "Atlantis Room"
+        },
+        {
+          "dir": "south",
+          "to_id": "ATLANTIS-ROOM",
+          "to": "Atlantis Room"
+        },
+        {
+          "dir": "west",
+          "to_id": "TWISTING-PASSAGE",
+          "to": "Twisting Passage"
+        }
+      ],
+      "items": []
+    },
+    "Cave (TINY-CAVE)": {
+      "id": "TINY-CAVE",
+      "name": "Cave",
+      "ldesc": "This is a tiny cave with entrances west and north, and a dark, forbidding staircase leading down.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [
+        "STAIRS"
+      ],
+      "exits": [
+        {
+          "dir": "north",
+          "to_id": "MIRROR-ROOM-2",
+          "to": "Mirror Room"
+        },
+        {
+          "dir": "west",
+          "to_id": "WINDING-PASSAGE",
+          "to": "Winding Passage"
+        },
+        {
+          "dir": "down",
+          "to_id": "ENTRANCE-TO-HADES",
+          "to": "Entrance to Hades"
+        }
+      ],
+      "items": []
+    },
+    "Cold Passage": {
+      "id": "COLD-PASSAGE",
+      "name": "Cold Passage",
+      "ldesc": "This is a cold and damp corridor where a long east-west passageway turns into a southward path.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "south",
+          "to_id": "MIRROR-ROOM-1",
+          "to": "Mirror Room"
+        },
+        {
+          "dir": "west",
+          "to_id": "SLIDE-ROOM",
+          "to": "Slide Room"
+        }
+      ],
+      "items": []
+    },
+    "Narrow Passage": {
+      "id": "NARROW-PASSAGE",
+      "name": "Narrow Passage",
+      "ldesc": "This is a long and narrow corridor where a long north-south passageway briefly narrows even further.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "north",
+          "to_id": "ROUND-ROOM",
+          "to": "Round Room"
+        },
+        {
+          "dir": "south",
+          "to_id": "MIRROR-ROOM-2",
+          "to": "Mirror Room"
+        }
+      ],
+      "items": []
+    },
+    "Winding Passage": {
+      "id": "WINDING-PASSAGE",
+      "name": "Winding Passage",
+      "ldesc": "This is a winding passage. It seems that there are only exits on the east and north.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "north",
+          "to_id": "MIRROR-ROOM-2",
+          "to": "Mirror Room"
+        },
+        {
+          "dir": "east",
+          "to_id": "TINY-CAVE",
+          "to": "Cave"
+        }
+      ],
+      "items": []
+    },
+    "Twisting Passage": {
+      "id": "TWISTING-PASSAGE",
+      "name": "Twisting Passage",
+      "ldesc": "This is a winding passage. It seems that there are only exits on the east and north.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "north",
+          "to_id": "MIRROR-ROOM-1",
+          "to": "Mirror Room"
+        },
+        {
+          "dir": "east",
+          "to_id": "SMALL-CAVE",
+          "to": "Cave"
+        }
+      ],
+      "items": []
+    },
+    "Atlantis Room": {
+      "id": "ATLANTIS-ROOM",
+      "name": "Atlantis Room",
+      "ldesc": "This is an ancient room, long under water. There is an exit to the south and a staircase leading up.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [
+        "STAIRS"
+      ],
+      "exits": [
+        {
+          "dir": "up",
+          "to_id": "SMALL-CAVE",
+          "to": "Cave"
+        },
+        {
+          "dir": "south",
+          "to_id": "RESERVOIR-NORTH",
+          "to": "Reservoir North"
+        }
+      ],
+      "items": [
+        "crystal trident"
+      ]
+    },
+    "East-West Passage": {
+      "id": "EW-PASSAGE",
+      "name": "East-West Passage",
+      "ldesc": "This is a narrow east-west passageway. There is a narrow stairway leading down at the north end of the room.",
+      "value": 5,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [
+        "STAIRS"
+      ],
+      "exits": [
+        {
+          "dir": "east",
+          "to_id": "ROUND-ROOM",
+          "to": "Round Room"
+        },
+        {
+          "dir": "west",
+          "to_id": "TROLL-ROOM",
+          "to": "The Troll Room"
+        },
+        {
+          "dir": "down",
+          "to_id": "CHASM-ROOM",
+          "to": "Chasm"
+        },
+        {
+          "dir": "north",
+          "to_id": "CHASM-ROOM",
+          "to": "Chasm"
+        }
+      ],
+      "items": []
+    },
+    "Round Room": {
+      "id": "ROUND-ROOM",
+      "name": "Round Room",
+      "ldesc": "This is a circular stone room with passages in all directions. Several of them have unfortunately been blocked by cave-ins.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "east",
+          "to_id": "LOUD-ROOM",
+          "to": "Loud Room"
+        },
+        {
+          "dir": "west",
+          "to_id": "EW-PASSAGE",
+          "to": "East-West Passage"
+        },
+        {
+          "dir": "north",
+          "to_id": "NS-PASSAGE",
+          "to": "North-South Passage"
+        },
+        {
+          "dir": "south",
+          "to_id": "NARROW-PASSAGE",
+          "to": "Narrow Passage"
+        },
+        {
+          "dir": "southeast",
+          "to_id": "ENGRAVINGS-CAVE",
+          "to": "Engravings Cave"
+        }
+      ],
+      "items": [
+        "thief"
+      ]
+    },
+    "Deep Canyon": {
+      "id": "DEEP-CANYON",
+      "name": "Deep Canyon",
+      "ldesc": "",
+      "value": 0,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [
+        "STAIRS"
+      ],
+      "exits": [
+        {
+          "dir": "northwest",
+          "to_id": "RESERVOIR-SOUTH",
+          "to": "Reservoir South"
+        },
+        {
+          "dir": "east",
+          "to_id": "DAM-ROOM",
+          "to": "Dam"
+        },
+        {
+          "dir": "southwest",
+          "to_id": "NS-PASSAGE",
+          "to": "North-South Passage"
+        },
+        {
+          "dir": "down",
+          "to_id": "LOUD-ROOM",
+          "to": "Loud Room"
+        }
+      ],
+      "items": []
+    },
+    "Damp Cave": {
+      "id": "DAMP-CAVE",
+      "name": "Damp Cave",
+      "ldesc": "This cave has exits to the west and east, and narrows to a crack toward the south. The earth is particularly damp here.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [
+        "CRACK"
+      ],
+      "exits": [
+        {
+          "dir": "west",
+          "to_id": "LOUD-ROOM",
+          "to": "Loud Room"
+        },
+        {
+          "dir": "east",
+          "to_id": "WHITE-CLIFFS-NORTH",
+          "to": "White Cliffs Beach"
+        },
+        {
+          "dir": "south",
+          "blocked": "It is too narrow for most insects."
+        }
+      ],
+      "items": []
+    },
+    "Loud Room": {
+      "id": "LOUD-ROOM",
+      "name": "Loud Room",
+      "ldesc": "",
+      "value": 0,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [
+        "STAIRS"
+      ],
+      "exits": [
+        {
+          "dir": "east",
+          "to_id": "DAMP-CAVE",
+          "to": "Damp Cave"
+        },
+        {
+          "dir": "west",
+          "to_id": "ROUND-ROOM",
+          "to": "Round Room"
+        },
+        {
+          "dir": "up",
+          "to_id": "DEEP-CANYON",
+          "to": "Deep Canyon"
+        }
+      ],
+      "items": [
+        "platinum bar"
+      ]
+    },
+    "North-South Passage": {
+      "id": "NS-PASSAGE",
+      "name": "North-South Passage",
+      "ldesc": "This is a high north-south passage, which forks to the northeast.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "north",
+          "to_id": "CHASM-ROOM",
+          "to": "Chasm"
+        },
+        {
+          "dir": "northeast",
+          "to_id": "DEEP-CANYON",
+          "to": "Deep Canyon"
+        },
+        {
+          "dir": "south",
+          "to_id": "ROUND-ROOM",
+          "to": "Round Room"
+        }
+      ],
+      "items": []
+    },
+    "Chasm": {
+      "id": "CHASM-ROOM",
+      "name": "Chasm",
+      "ldesc": "A chasm runs southwest to northeast and the path follows it. You are on the south side of the chasm, where a crack opens into a passage.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [
+        "CRACK",
+        "STAIRS"
+      ],
+      "exits": [
+        {
+          "dir": "northeast",
+          "to_id": "RESERVOIR-SOUTH",
+          "to": "Reservoir South"
+        },
+        {
+          "dir": "southwest",
+          "to_id": "EW-PASSAGE",
+          "to": "East-West Passage"
+        },
+        {
+          "dir": "up",
+          "to_id": "EW-PASSAGE",
+          "to": "East-West Passage"
+        },
+        {
+          "dir": "south",
+          "to_id": "NS-PASSAGE",
+          "to": "North-South Passage"
+        },
+        {
+          "dir": "down",
+          "blocked": "Are you out of your mind?"
+        }
+      ],
+      "items": []
+    },
+    "Entrance to Hades": {
+      "id": "ENTRANCE-TO-HADES",
+      "name": "Entrance to Hades",
+      "ldesc": "",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "ONBIT"
+      ],
+      "globals": [
+        "BODIES"
+      ],
+      "exits": [
+        {
+          "dir": "up",
+          "to_id": "TINY-CAVE",
+          "to": "Cave"
+        },
+        {
+          "dir": "in",
+          "to_id": "LAND-OF-LIVING-DEAD",
+          "condition": "LLD-FLAG",
+          "else_blocked": "Some invisible force prevents you from passing through the gate.",
+          "to": "Land of the Dead"
+        },
+        {
+          "dir": "south",
+          "to_id": "LAND-OF-LIVING-DEAD",
+          "condition": "LLD-FLAG",
+          "else_blocked": "Some invisible force prevents you from passing through the gate.",
+          "to": "Land of the Dead"
+        }
+      ],
+      "items": [
+        "number of ghosts"
+      ]
+    },
+    "Land of the Dead": {
+      "id": "LAND-OF-LIVING-DEAD",
+      "name": "Land of the Dead",
+      "ldesc": "You have entered the Land of the Living Dead. Thousands of lost souls can be heard weeping and moaning. In the corner are stacked the remains of dozens of previous adventurers less fortunate than yourself. A passage exits to the north.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "ONBIT"
+      ],
+      "globals": [
+        "BODIES"
+      ],
+      "exits": [
+        {
+          "dir": "out",
+          "to_id": "ENTRANCE-TO-HADES",
+          "to": "Entrance to Hades"
+        },
+        {
+          "dir": "north",
+          "to_id": "ENTRANCE-TO-HADES",
+          "to": "Entrance to Hades"
+        }
+      ],
+      "items": [
+        "crystal skull"
+      ]
+    },
+    "Engravings Cave": {
+      "id": "ENGRAVINGS-CAVE",
+      "name": "Engravings Cave",
+      "ldesc": "You have entered a low cave with passages leading northwest and east.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "northwest",
+          "to_id": "ROUND-ROOM",
+          "to": "Round Room"
+        },
+        {
+          "dir": "east",
+          "to_id": "DOME-ROOM",
+          "to": "Dome Room"
+        }
+      ],
+      "items": [
+        "wall with engravings"
+      ]
+    },
+    "Egyptian Room": {
+      "id": "EGYPT-ROOM",
+      "name": "Egyptian Room",
+      "ldesc": "This is a room which looks like an Egyptian tomb. There is an ascending staircase to the west.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [
+        "STAIRS"
+      ],
+      "exits": [
+        {
+          "dir": "west",
+          "to_id": "NORTH-TEMPLE",
+          "to": "Temple"
+        },
+        {
+          "dir": "up",
+          "to_id": "NORTH-TEMPLE",
+          "to": "Temple"
+        }
+      ],
+      "items": [
+        "gold coffin"
+      ]
+    },
+    "Dome Room": {
+      "id": "DOME-ROOM",
+      "name": "Dome Room",
+      "ldesc": "",
+      "value": 0,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "west",
+          "to_id": "ENGRAVINGS-CAVE",
+          "to": "Engravings Cave"
+        },
+        {
+          "dir": "down",
+          "to_id": "TORCH-ROOM",
+          "condition": "DOME-FLAG",
+          "else_blocked": "You cannot go down without fracturing many bones.",
+          "to": "Torch Room"
+        }
+      ],
+      "items": [
+        "wooden railing"
+      ]
+    },
+    "Torch Room": {
+      "id": "TORCH-ROOM",
+      "name": "Torch Room",
+      "ldesc": "",
+      "value": 0,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [
+        "STAIRS"
+      ],
+      "exits": [
+        {
+          "dir": "up",
+          "blocked": "You cannot reach the rope."
+        },
+        {
+          "dir": "south",
+          "to_id": "NORTH-TEMPLE",
+          "to": "Temple"
+        },
+        {
+          "dir": "down",
+          "to_id": "NORTH-TEMPLE",
+          "to": "Temple"
+        }
+      ],
+      "items": [
+        "pedestal"
+      ]
+    },
+    "Temple": {
+      "id": "NORTH-TEMPLE",
+      "name": "Temple",
+      "ldesc": "This is the north end of a large temple. On the east wall is an ancient inscription, probably a prayer in a long-forgotten language. Below the prayer is a staircase leading down. The west wall is solid granite. The exit to the north end of the room is through huge marble pillars.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "ONBIT",
+        "SACREDBIT"
+      ],
+      "globals": [
+        "STAIRS"
+      ],
+      "exits": [
+        {
+          "dir": "down",
+          "to_id": "EGYPT-ROOM",
+          "to": "Egyptian Room"
+        },
+        {
+          "dir": "east",
+          "to_id": "EGYPT-ROOM",
+          "to": "Egyptian Room"
+        },
+        {
+          "dir": "north",
+          "to_id": "TORCH-ROOM",
+          "to": "Torch Room"
+        },
+        {
+          "dir": "out",
+          "to_id": "TORCH-ROOM",
+          "to": "Torch Room"
+        },
+        {
+          "dir": "up",
+          "to_id": "TORCH-ROOM",
+          "to": "Torch Room"
+        },
+        {
+          "dir": "south",
+          "to_id": "SOUTH-TEMPLE",
+          "to": "Altar"
+        }
+      ],
+      "items": [
+        "brass bell",
+        "prayer"
+      ]
+    },
+    "Altar": {
+      "id": "SOUTH-TEMPLE",
+      "name": "Altar",
+      "ldesc": "This is the south end of a large temple. In front of you is what appears to be an altar. In one corner is a small hole in the floor which leads into darkness. You probably could not get back up it.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "ONBIT",
+        "SACREDBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "north",
+          "to_id": "NORTH-TEMPLE",
+          "to": "Temple"
+        },
+        {
+          "dir": "down",
+          "to_id": "TINY-CAVE",
+          "condition": "COFFIN-CURE",
+          "else_blocked": "You haven't a prayer of getting the coffin down there.",
+          "to": "Cave"
+        }
+      ],
+      "items": [
+        "altar",
+        "pair of candles"
+      ]
+    },
+    "Dam": {
+      "id": "DAM-ROOM",
+      "name": "Dam",
+      "ldesc": "",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "ONBIT"
+      ],
+      "globals": [
+        "GLOBAL-WATER"
+      ],
+      "exits": [
+        {
+          "dir": "south",
+          "to_id": "DEEP-CANYON",
+          "to": "Deep Canyon"
+        },
+        {
+          "dir": "down",
+          "to_id": "DAM-BASE",
+          "to": "Dam Base"
+        },
+        {
+          "dir": "east",
+          "to_id": "DAM-BASE",
+          "to": "Dam Base"
+        },
+        {
+          "dir": "north",
+          "to_id": "DAM-LOBBY",
+          "to": "Dam Lobby"
+        },
+        {
+          "dir": "west",
+          "to_id": "RESERVOIR-SOUTH",
+          "to": "Reservoir South"
+        }
+      ],
+      "items": [
+        "bolt",
+        "green bubble",
+        "dam",
+        "control panel"
+      ]
+    },
+    "Dam Lobby": {
+      "id": "DAM-LOBBY",
+      "name": "Dam Lobby",
+      "ldesc": "This room appears to have been the waiting room for groups touring the dam. There are open doorways here to the north and east marked \\\"Private\\\", and there is a path leading south over the top of the dam.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "ONBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "south",
+          "to_id": "DAM-ROOM",
+          "to": "Dam"
+        },
+        {
+          "dir": "north",
+          "to_id": "MAINTENANCE-ROOM",
+          "to": "Maintenance Room"
+        },
+        {
+          "dir": "east",
+          "to_id": "MAINTENANCE-ROOM",
+          "to": "Maintenance Room"
+        }
+      ],
+      "items": [
+        "matchbook",
+        "tour guidebook"
+      ]
+    },
+    "Maintenance Room": {
+      "id": "MAINTENANCE-ROOM",
+      "name": "Maintenance Room",
+      "ldesc": "This is what appears to have been the maintenance room for Flood Control Dam #3. Apparently, this room has been ransacked recently, for most of the valuable equipment is gone. On the wall in front of you is a group of buttons colored blue, yellow, brown, and red. There are doorways to the west and south.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "south",
+          "to_id": "DAM-LOBBY",
+          "to": "Dam Lobby"
+        },
+        {
+          "dir": "west",
+          "to_id": "DAM-LOBBY",
+          "to": "Dam Lobby"
+        }
+      ],
+      "items": [
+        "group of tool chests",
+        "yellow button",
+        "brown button",
+        "red button",
+        "blue button",
+        "leak",
+        "screwdriver",
+        "tube",
+        "wrench"
+      ]
+    },
+    "Dam Base": {
+      "id": "DAM-BASE",
+      "name": "Dam Base",
+      "ldesc": "You are at the base of Flood Control Dam #3, which looms above you and to the north. The river Frigid is flowing by here. Along the river are the White Cliffs which seem to form giant walls stretching from north to south along the shores of the river as it winds its way downstream.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "ONBIT",
+        "SACREDBIT"
+      ],
+      "globals": [
+        "GLOBAL-WATER",
+        "RIVER"
+      ],
+      "exits": [
+        {
+          "dir": "north",
+          "to_id": "DAM-ROOM",
+          "to": "Dam"
+        },
+        {
+          "dir": "up",
+          "to_id": "DAM-ROOM",
+          "to": "Dam"
+        }
+      ],
+      "items": [
+        "pile of plastic"
+      ]
+    },
+    "Frigid River": {
+      "id": "RIVER-1",
+      "name": "Frigid River",
+      "ldesc": "You are on the Frigid River in the vicinity of the Dam. The river flows quietly here. There is a landing on the west shore.",
+      "value": 0,
+      "flags": [
+        "NONLANDBIT",
+        "SACREDBIT",
+        "ONBIT"
+      ],
+      "globals": [
+        "GLOBAL-WATER",
+        "RIVER"
+      ],
+      "exits": [
+        {
+          "dir": "up",
+          "blocked": "You cannot go upstream due to strong currents."
+        },
+        {
+          "dir": "west",
+          "to_id": "DAM-BASE",
+          "to": "Dam Base"
+        },
+        {
+          "dir": "land",
+          "to_id": "DAM-BASE",
+          "to": "Dam Base"
+        },
+        {
+          "dir": "down",
+          "to_id": "RIVER-2",
+          "to": "Frigid River"
+        },
+        {
+          "dir": "east",
+          "blocked": "The White Cliffs prevent your landing here."
+        }
+      ],
+      "items": [
+        "red buoy"
+      ]
+    },
+    "Frigid River (RIVER-2)": {
+      "id": "RIVER-2",
+      "name": "Frigid River",
+      "ldesc": "The river turns a corner here making it impossible to see the Dam. The White Cliffs loom on the east bank and large rocks prevent landing on the west.",
+      "value": 0,
+      "flags": [
+        "NONLANDBIT",
+        "SACREDBIT"
+      ],
+      "globals": [
+        "GLOBAL-WATER",
+        "RIVER"
+      ],
+      "exits": [
+        {
+          "dir": "up",
+          "blocked": "You cannot go upstream due to strong currents."
+        },
+        {
+          "dir": "down",
+          "to_id": "RIVER-3",
+          "to": "Frigid River"
+        },
+        {
+          "dir": "land",
+          "blocked": "There is no safe landing spot here."
+        },
+        {
+          "dir": "east",
+          "blocked": "The White Cliffs prevent your landing here."
+        },
+        {
+          "dir": "west",
+          "blocked": "Just in time you steer away from the rocks."
+        }
+      ],
+      "items": [
+        "red buoy"
+      ]
+    },
+    "Frigid River (RIVER-3)": {
+      "id": "RIVER-3",
+      "name": "Frigid River",
+      "ldesc": "The river descends here into a valley. There is a narrow beach on the west shore below the cliffs. In the distance a faint rumbling can be heard.",
+      "value": 0,
+      "flags": [
+        "NONLANDBIT",
+        "SACREDBIT"
+      ],
+      "globals": [
+        "GLOBAL-WATER",
+        "RIVER"
+      ],
+      "exits": [
+        {
+          "dir": "up",
+          "blocked": "You cannot go upstream due to strong currents."
+        },
+        {
+          "dir": "down",
+          "to_id": "RIVER-4",
+          "to": "Frigid River"
+        },
+        {
+          "dir": "land",
+          "to_id": "WHITE-CLIFFS-NORTH",
+          "to": "White Cliffs Beach"
+        },
+        {
+          "dir": "west",
+          "to_id": "WHITE-CLIFFS-NORTH",
+          "to": "White Cliffs Beach"
+        }
+      ],
+      "items": [
+        "red buoy"
+      ]
+    },
+    "White Cliffs Beach": {
+      "id": "WHITE-CLIFFS-NORTH",
+      "name": "White Cliffs Beach",
+      "ldesc": "You are on a narrow strip of beach which runs along the base of the White Cliffs. There is a narrow path heading south along the Cliffs and a tight passage leading west into the cliffs themselves.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "SACREDBIT"
+      ],
+      "globals": [
+        "GLOBAL-WATER",
+        "WHITE-CLIFF",
+        "RIVER"
+      ],
+      "exits": [
+        {
+          "dir": "south",
+          "to_id": "WHITE-CLIFFS-SOUTH",
+          "condition": "DEFLATE",
+          "else_blocked": "The path is too narrow.",
+          "to": "White Cliffs Beach"
+        },
+        {
+          "dir": "west",
+          "to_id": "DAMP-CAVE",
+          "condition": "DEFLATE",
+          "else_blocked": "The path is too narrow.",
+          "to": "Damp Cave"
+        }
+      ],
+      "items": []
+    },
+    "White Cliffs Beach (WHITE-CLIFFS-SOUTH)": {
+      "id": "WHITE-CLIFFS-SOUTH",
+      "name": "White Cliffs Beach",
+      "ldesc": "You are on a rocky, narrow strip of beach beside the Cliffs. A narrow path leads north along the shore.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "SACREDBIT"
+      ],
+      "globals": [
+        "GLOBAL-WATER",
+        "WHITE-CLIFF",
+        "RIVER"
+      ],
+      "exits": [
+        {
+          "dir": "north",
+          "to_id": "WHITE-CLIFFS-NORTH",
+          "condition": "DEFLATE",
+          "else_blocked": "The path is too narrow.",
+          "to": "White Cliffs Beach"
+        }
+      ],
+      "items": []
+    },
+    "Frigid River (RIVER-4)": {
+      "id": "RIVER-4",
+      "name": "Frigid River",
+      "ldesc": "The river is running faster here and the sound ahead appears to be that of rushing water. On the east shore is a sandy beach. A small area of beach can also be seen below the cliffs on the west shore.",
+      "value": 0,
+      "flags": [
+        "NONLANDBIT",
+        "SACREDBIT"
+      ],
+      "globals": [
+        "GLOBAL-WATER",
+        "RIVER"
+      ],
+      "exits": [
+        {
+          "dir": "up",
+          "blocked": "You cannot go upstream due to strong currents."
+        },
+        {
+          "dir": "down",
+          "to_id": "RIVER-5",
+          "to": "Frigid River"
+        },
+        {
+          "dir": "land",
+          "blocked": "You can land either to the east or the west."
+        },
+        {
+          "dir": "west",
+          "to_id": "WHITE-CLIFFS-SOUTH",
+          "to": "White Cliffs Beach"
+        },
+        {
+          "dir": "east",
+          "to_id": "SANDY-BEACH",
+          "to": "Sandy Beach"
+        }
+      ],
+      "items": [
+        "red buoy"
+      ]
+    },
+    "Frigid River (RIVER-5)": {
+      "id": "RIVER-5",
+      "name": "Frigid River",
+      "ldesc": "The sound of rushing water is nearly unbearable here. On the east shore is a large landing area.",
+      "value": 0,
+      "flags": [
+        "NONLANDBIT",
+        "SACREDBIT",
+        "ONBIT"
+      ],
+      "globals": [
+        "GLOBAL-WATER",
+        "RIVER"
+      ],
+      "exits": [
+        {
+          "dir": "up",
+          "blocked": "You cannot go upstream due to strong currents."
+        },
+        {
+          "dir": "east",
+          "to_id": "SHORE",
+          "to": "Shore"
+        },
+        {
+          "dir": "land",
+          "to_id": "SHORE",
+          "to": "Shore"
+        }
+      ],
+      "items": [
+        "red buoy"
+      ]
+    },
+    "Shore": {
+      "id": "SHORE",
+      "name": "Shore",
+      "ldesc": "You are on the east shore of the river. The water here seems somewhat treacherous. A path travels from north to south here, the south end quickly turning around a sharp corner.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "SACREDBIT",
+        "ONBIT"
+      ],
+      "globals": [
+        "GLOBAL-WATER",
+        "RIVER"
+      ],
+      "exits": [
+        {
+          "dir": "north",
+          "to_id": "SANDY-BEACH",
+          "to": "Sandy Beach"
+        },
+        {
+          "dir": "south",
+          "to_id": "ARAGAIN-FALLS",
+          "to": "Aragain Falls"
+        }
+      ],
+      "items": []
+    },
+    "Sandy Beach": {
+      "id": "SANDY-BEACH",
+      "name": "Sandy Beach",
+      "ldesc": "You are on a large sandy beach on the east shore of the river, which is flowing quickly by. A path runs beside the river to the south here, and a passage is partially buried in sand to the northeast.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "SACREDBIT"
+      ],
+      "globals": [
+        "GLOBAL-WATER",
+        "RIVER"
+      ],
+      "exits": [
+        {
+          "dir": "northeast",
+          "to_id": "SANDY-CAVE",
+          "to": "Sandy Cave"
+        },
+        {
+          "dir": "south",
+          "to_id": "SHORE",
+          "to": "Shore"
+        }
+      ],
+      "items": [
+        "shovel"
+      ]
+    },
+    "Sandy Cave": {
+      "id": "SANDY-CAVE",
+      "name": "Sandy Cave",
+      "ldesc": "This is a sand-filled cave whose exit is to the southwest.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "southwest",
+          "to_id": "SANDY-BEACH",
+          "to": "Sandy Beach"
+        }
+      ],
+      "items": [
+        "sand",
+        "beautiful jeweled scarab"
+      ]
+    },
+    "Aragain Falls": {
+      "id": "ARAGAIN-FALLS",
+      "name": "Aragain Falls",
+      "ldesc": "",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "SACREDBIT",
+        "ONBIT"
+      ],
+      "globals": [
+        "GLOBAL-WATER",
+        "RIVER",
+        "RAINBOW"
+      ],
+      "exits": [
+        {
+          "dir": "west",
+          "to_id": "ON-RAINBOW",
+          "condition": "RAINBOW-FLAG",
+          "to": "On the Rainbow"
+        },
+        {
+          "dir": "down",
+          "blocked": "It's a long way..."
+        },
+        {
+          "dir": "north",
+          "to_id": "SHORE",
+          "to": "Shore"
+        },
+        {
+          "dir": "up",
+          "to_id": "ON-RAINBOW",
+          "condition": "RAINBOW-FLAG",
+          "to": "On the Rainbow"
+        }
+      ],
+      "items": []
+    },
+    "On the Rainbow": {
+      "id": "ON-RAINBOW",
+      "name": "On the Rainbow",
+      "ldesc": "You are on top of a rainbow (I bet you never thought you would walk on a rainbow), with a magnificent view of the Falls. The rainbow travels east-west here.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "ONBIT",
+        "SACREDBIT"
+      ],
+      "globals": [
+        "RAINBOW"
+      ],
+      "exits": [
+        {
+          "dir": "west",
+          "to_id": "END-OF-RAINBOW",
+          "to": "End of Rainbow"
+        },
+        {
+          "dir": "east",
+          "to_id": "ARAGAIN-FALLS",
+          "to": "Aragain Falls"
+        }
+      ],
+      "items": []
+    },
+    "End of Rainbow": {
+      "id": "END-OF-RAINBOW",
+      "name": "End of Rainbow",
+      "ldesc": "You are on a small, rocky beach on the continuation of the Frigid River past the Falls. The beach is narrow due to the presence of the White Cliffs. The river canyon opens here and sunlight shines in from above. A rainbow crosses over the falls to the east and a narrow path continues to the southwest.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "ONBIT"
+      ],
+      "globals": [
+        "GLOBAL-WATER",
+        "RAINBOW",
+        "RIVER"
+      ],
+      "exits": [
+        {
+          "dir": "up",
+          "to_id": "ON-RAINBOW",
+          "condition": "RAINBOW-FLAG",
+          "to": "On the Rainbow"
+        },
+        {
+          "dir": "northeast",
+          "to_id": "ON-RAINBOW",
+          "condition": "RAINBOW-FLAG",
+          "to": "On the Rainbow"
+        },
+        {
+          "dir": "east",
+          "to_id": "ON-RAINBOW",
+          "condition": "RAINBOW-FLAG",
+          "to": "On the Rainbow"
+        },
+        {
+          "dir": "southwest",
+          "to_id": "CANYON-BOTTOM",
+          "to": "Canyon Bottom"
+        }
+      ],
+      "items": [
+        "pot of gold"
+      ]
+    },
+    "Canyon Bottom": {
+      "id": "CANYON-BOTTOM",
+      "name": "Canyon Bottom",
+      "ldesc": "You are beneath the walls of the river canyon which may be climbable here. The lesser part of the runoff of Aragain Falls flows by below. To the north is a narrow path.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "ONBIT",
+        "SACREDBIT"
+      ],
+      "globals": [
+        "GLOBAL-WATER",
+        "CLIMBABLE-CLIFF",
+        "RIVER"
+      ],
+      "exits": [
+        {
+          "dir": "up",
+          "to_id": "CLIFF-MIDDLE",
+          "to": "Rocky Ledge"
+        },
+        {
+          "dir": "north",
+          "to_id": "END-OF-RAINBOW",
+          "to": "End of Rainbow"
+        }
+      ],
+      "items": []
+    },
+    "Rocky Ledge": {
+      "id": "CLIFF-MIDDLE",
+      "name": "Rocky Ledge",
+      "ldesc": "You are on a ledge about halfway up the wall of the river canyon. You can see from here that the main flow from Aragain Falls twists along a passage which it is impossible for you to enter. Below you is the canyon bottom. Above you is more cliff, which appears climbable.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "ONBIT",
+        "SACREDBIT"
+      ],
+      "globals": [
+        "CLIMBABLE-CLIFF",
+        "RIVER"
+      ],
+      "exits": [
+        {
+          "dir": "up",
+          "to_id": "CANYON-VIEW",
+          "to": "Canyon View"
+        },
+        {
+          "dir": "down",
+          "to_id": "CANYON-BOTTOM",
+          "to": "Canyon Bottom"
+        }
+      ],
+      "items": []
+    },
+    "Canyon View": {
+      "id": "CANYON-VIEW",
+      "name": "Canyon View",
+      "ldesc": "You are at the top of the Great Canyon on its west wall. From here there is a marvelous view of the canyon and parts of the Frigid River upstream. Across the canyon, the walls of the White Cliffs join the mighty ramparts of the Flathead Mountains to the east. Following the Canyon upstream to the north, Aragain Falls may be seen, complete with rainbow. The mighty Frigid River flows out from a great dark cavern. To the west and south can be seen an immense forest, stretching for miles around. A path leads northwest. It is possible to climb down into the canyon from here.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "ONBIT",
+        "SACREDBIT"
+      ],
+      "globals": [
+        "CLIMBABLE-CLIFF",
+        "RIVER",
+        "RAINBOW"
+      ],
+      "exits": [
+        {
+          "dir": "east",
+          "to_id": "CLIFF-MIDDLE",
+          "to": "Rocky Ledge"
+        },
+        {
+          "dir": "down",
+          "to_id": "CLIFF-MIDDLE",
+          "to": "Rocky Ledge"
+        },
+        {
+          "dir": "northwest",
+          "to_id": "CLEARING",
+          "to": "Clearing"
+        },
+        {
+          "dir": "west",
+          "to_id": "FOREST-3",
+          "to": "Forest"
+        },
+        {
+          "dir": "south",
+          "blocked": "Storm-tossed trees block your way."
+        }
+      ],
+      "items": []
+    },
+    "Mine Entrance": {
+      "id": "MINE-ENTRANCE",
+      "name": "Mine Entrance",
+      "ldesc": "You are standing at the entrance of what might have been a coal mine. The shaft enters the west wall, and there is another exit on the south end of the room.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "south",
+          "to_id": "SLIDE-ROOM",
+          "to": "Slide Room"
+        },
+        {
+          "dir": "in",
+          "to_id": "SQUEEKY-ROOM",
+          "to": "Squeaky Room"
+        },
+        {
+          "dir": "west",
+          "to_id": "SQUEEKY-ROOM",
+          "to": "Squeaky Room"
+        }
+      ],
+      "items": []
+    },
+    "Squeaky Room": {
+      "id": "SQUEEKY-ROOM",
+      "name": "Squeaky Room",
+      "ldesc": "You are in a small room. Strange squeaky sounds may be heard coming from the passage at the north end. You may also escape to the east.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "north",
+          "to_id": "BAT-ROOM",
+          "to": "Bat Room"
+        },
+        {
+          "dir": "east",
+          "to_id": "MINE-ENTRANCE",
+          "to": "Mine Entrance"
+        }
+      ],
+      "items": []
+    },
+    "Bat Room": {
+      "id": "BAT-ROOM",
+      "name": "Bat Room",
+      "ldesc": "",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "SACREDBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "south",
+          "to_id": "SQUEEKY-ROOM",
+          "to": "Squeaky Room"
+        },
+        {
+          "dir": "east",
+          "to_id": "SHAFT-ROOM",
+          "to": "Shaft Room"
+        }
+      ],
+      "items": [
+        "bat",
+        "jade figurine"
+      ]
+    },
+    "Shaft Room": {
+      "id": "SHAFT-ROOM",
+      "name": "Shaft Room",
+      "ldesc": "This is a large room, in the middle of which is a small shaft descending through the floor into darkness below. To the west and the north are exits from this room. Constructed over the top of the shaft is a metal framework to which a heavy iron chain is attached.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "down",
+          "blocked": "You wouldn't fit and would die if you could."
+        },
+        {
+          "dir": "west",
+          "to_id": "BAT-ROOM",
+          "to": "Bat Room"
+        },
+        {
+          "dir": "north",
+          "to_id": "SMELLY-ROOM",
+          "to": "Smelly Room"
+        }
+      ],
+      "items": [
+        "basket"
+      ]
+    },
+    "Smelly Room": {
+      "id": "SMELLY-ROOM",
+      "name": "Smelly Room",
+      "ldesc": "This is a small nondescript room. However, from the direction of a small descending staircase a foul odor can be detected. To the south is a narrow tunnel.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [
+        "STAIRS"
+      ],
+      "exits": [
+        {
+          "dir": "down",
+          "to_id": "GAS-ROOM",
+          "to": "Gas Room"
+        },
+        {
+          "dir": "south",
+          "to_id": "SHAFT-ROOM",
+          "to": "Shaft Room"
+        }
+      ],
+      "items": []
+    },
+    "Gas Room": {
+      "id": "GAS-ROOM",
+      "name": "Gas Room",
+      "ldesc": "This is a small room which smells strongly of coal gas. There is a short climb up some stairs and a narrow tunnel leading east.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "SACREDBIT"
+      ],
+      "globals": [
+        "STAIRS"
+      ],
+      "exits": [
+        {
+          "dir": "up",
+          "to_id": "SMELLY-ROOM",
+          "to": "Smelly Room"
+        },
+        {
+          "dir": "east",
+          "to_id": "MINE-1",
+          "to": "Coal Mine"
+        }
+      ],
+      "items": [
+        "sapphire-encrusted bracelet"
+      ]
+    },
+    "Ladder Top": {
+      "id": "LADDER-TOP",
+      "name": "Ladder Top",
+      "ldesc": "This is a very small room. In the corner is a rickety wooden ladder, leading downward. It might be safe to descend. There is also a staircase leading upward.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [
+        "LADDER",
+        "STAIRS"
+      ],
+      "exits": [
+        {
+          "dir": "down",
+          "to_id": "LADDER-BOTTOM",
+          "to": "Ladder Bottom"
+        },
+        {
+          "dir": "up",
+          "to_id": "MINE-4",
+          "to": "Coal Mine"
+        }
+      ],
+      "items": []
+    },
+    "Ladder Bottom": {
+      "id": "LADDER-BOTTOM",
+      "name": "Ladder Bottom",
+      "ldesc": "This is a rather wide room. On one side is the bottom of a narrow wooden ladder. To the west and the south are passages leaving the room.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [
+        "LADDER"
+      ],
+      "exits": [
+        {
+          "dir": "south",
+          "to_id": "DEAD-END-5",
+          "to": "Dead End"
+        },
+        {
+          "dir": "west",
+          "to_id": "TIMBER-ROOM",
+          "to": "Timber Room"
+        },
+        {
+          "dir": "up",
+          "to_id": "LADDER-TOP",
+          "to": "Ladder Top"
+        }
+      ],
+      "items": []
+    },
+    "Dead End (DEAD-END-5)": {
+      "id": "DEAD-END-5",
+      "name": "Dead End",
+      "ldesc": "You have come to a dead end in the mine.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "north",
+          "to_id": "LADDER-BOTTOM",
+          "to": "Ladder Bottom"
+        }
+      ],
+      "items": [
+        "small pile of coal"
+      ]
+    },
+    "Timber Room": {
+      "id": "TIMBER-ROOM",
+      "name": "Timber Room",
+      "ldesc": "This is a long and narrow passage, which is cluttered with broken timbers. A wide passage comes from the east and turns at the west end of the room into a very narrow passageway. From the west comes a strong draft.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "SACREDBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "east",
+          "to_id": "LADDER-BOTTOM",
+          "to": "Ladder Bottom"
+        },
+        {
+          "dir": "west",
+          "to_id": "LOWER-SHAFT",
+          "condition": "EMPTY-HANDED",
+          "else_blocked": "You cannot fit through this passage with that load.",
+          "to": "Drafty Room"
+        }
+      ],
+      "items": [
+        "broken timber"
+      ]
+    },
+    "Drafty Room": {
+      "id": "LOWER-SHAFT",
+      "name": "Drafty Room",
+      "ldesc": "This is a small drafty room in which is the bottom of a long shaft. To the south is a passageway and to the east a very narrow passage. In the shaft can be seen a heavy iron chain.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT",
+        "SACREDBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "south",
+          "to_id": "MACHINE-ROOM",
+          "to": "Machine Room"
+        },
+        {
+          "dir": "out",
+          "to_id": "TIMBER-ROOM",
+          "condition": "EMPTY-HANDED",
+          "else_blocked": "You cannot fit through this passage with that load.",
+          "to": "Timber Room"
+        },
+        {
+          "dir": "east",
+          "to_id": "TIMBER-ROOM",
+          "condition": "EMPTY-HANDED",
+          "else_blocked": "You cannot fit through this passage with that load.",
+          "to": "Timber Room"
+        }
+      ],
+      "items": [
+        "basket"
+      ]
+    },
+    "Machine Room": {
+      "id": "MACHINE-ROOM",
+      "name": "Machine Room",
+      "ldesc": "",
+      "value": 0,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "north",
+          "to_id": "LOWER-SHAFT",
+          "to": "Drafty Room"
+        }
+      ],
+      "items": [
+        "machine",
+        "switch"
+      ]
+    },
+    "Coal Mine": {
+      "id": "MINE-1",
+      "name": "Coal Mine",
+      "ldesc": "This is a nondescript part of a coal mine.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "north",
+          "to_id": "GAS-ROOM",
+          "to": "Gas Room"
+        },
+        {
+          "dir": "east",
+          "to_id": "MINE-1",
+          "to": "Coal Mine"
+        },
+        {
+          "dir": "northeast",
+          "to_id": "MINE-2",
+          "to": "Coal Mine"
+        }
+      ],
+      "items": []
+    },
+    "Coal Mine (MINE-2)": {
+      "id": "MINE-2",
+      "name": "Coal Mine",
+      "ldesc": "This is a nondescript part of a coal mine.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "north",
+          "to_id": "MINE-2",
+          "to": "Coal Mine"
+        },
+        {
+          "dir": "south",
+          "to_id": "MINE-1",
+          "to": "Coal Mine"
+        },
+        {
+          "dir": "southeast",
+          "to_id": "MINE-3",
+          "to": "Coal Mine"
+        }
+      ],
+      "items": []
+    },
+    "Coal Mine (MINE-3)": {
+      "id": "MINE-3",
+      "name": "Coal Mine",
+      "ldesc": "This is a nondescript part of a coal mine.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "south",
+          "to_id": "MINE-3",
+          "to": "Coal Mine"
+        },
+        {
+          "dir": "southwest",
+          "to_id": "MINE-4",
+          "to": "Coal Mine"
+        },
+        {
+          "dir": "east",
+          "to_id": "MINE-2",
+          "to": "Coal Mine"
+        }
+      ],
+      "items": []
+    },
+    "Coal Mine (MINE-4)": {
+      "id": "MINE-4",
+      "name": "Coal Mine",
+      "ldesc": "This is a nondescript part of a coal mine.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [],
+      "exits": [
+        {
+          "dir": "north",
+          "to_id": "MINE-3",
+          "to": "Coal Mine"
+        },
+        {
+          "dir": "west",
+          "to_id": "MINE-4",
+          "to": "Coal Mine"
+        },
+        {
+          "dir": "down",
+          "to_id": "LADDER-TOP",
+          "to": "Ladder Top"
+        }
+      ],
+      "items": []
+    },
+    "Slide Room": {
+      "id": "SLIDE-ROOM",
+      "name": "Slide Room",
+      "ldesc": "This is a small chamber, which appears to have been part of a coal mine. On the south wall of the chamber the letters \\\"Granite Wall\\\" are etched in the rock. To the east is a long passage, and there is a steep metal slide twisting downward. To the north is a small opening.",
+      "value": 0,
+      "flags": [
+        "RLANDBIT"
+      ],
+      "globals": [
+        "SLIDE"
+      ],
+      "exits": [
+        {
+          "dir": "east",
+          "to_id": "COLD-PASSAGE",
+          "to": "Cold Passage"
+        },
+        {
+          "dir": "north",
+          "to_id": "MINE-ENTRANCE",
+          "to": "Mine Entrance"
+        },
+        {
+          "dir": "down",
+          "to_id": "CELLAR",
+          "to": "Cellar"
+        }
+      ],
+      "items": []
+    }
+  },
+  "objects": {
+    "board": {
+      "id": "BOARD",
+      "name": "board",
+      "in": "LOCAL-GLOBALS",
+      "synonyms": [
+        "BOARDS",
+        "BOARD"
+      ],
+      "adjectives": [],
+      "flags": [
+        "NDESCBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "set of teeth": {
+      "id": "TEETH",
+      "name": "set of teeth",
+      "in": "GLOBAL-OBJECTS",
+      "synonyms": [
+        "OVERBOARD",
+        "TEETH"
+      ],
+      "adjectives": [],
+      "flags": [
+        "NDESCBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "surrounding wall": {
+      "id": "WALL",
+      "name": "surrounding wall",
+      "in": "GLOBAL-OBJECTS",
+      "synonyms": [
+        "WALL",
+        "WALLS"
+      ],
+      "adjectives": [
+        "SURROUNDING"
+      ],
+      "flags": [],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "granite wall": {
+      "id": "GRANITE-WALL",
+      "name": "granite wall",
+      "in": "GLOBAL-OBJECTS",
+      "synonyms": [
+        "WALL"
+      ],
+      "adjectives": [
+        "GRANITE"
+      ],
+      "flags": [],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "songbird": {
+      "id": "SONGBIRD",
+      "name": "songbird",
+      "in": "LOCAL-GLOBALS",
+      "synonyms": [
+        "BIRD",
+        "SONGBIRD"
+      ],
+      "adjectives": [
+        "SONG"
+      ],
+      "flags": [
+        "NDESCBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "white house": {
+      "id": "WHITE-HOUSE",
+      "name": "white house",
+      "in": "LOCAL-GLOBALS",
+      "synonyms": [
+        "HOUSE"
+      ],
+      "adjectives": [
+        "WHITE",
+        "BEAUTI",
+        "COLONI"
+      ],
+      "flags": [
+        "NDESCBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "forest": {
+      "id": "FOREST",
+      "name": "forest",
+      "in": "LOCAL-GLOBALS",
+      "synonyms": [
+        "FOREST",
+        "TREES",
+        "PINES",
+        "HEMLOCKS"
+      ],
+      "adjectives": [],
+      "flags": [
+        "NDESCBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "tree": {
+      "id": "TREE",
+      "name": "tree",
+      "in": "LOCAL-GLOBALS",
+      "synonyms": [
+        "TREE",
+        "BRANCH"
+      ],
+      "adjectives": [
+        "LARGE",
+        "STORM",
+        ";\"-TOSSED\""
+      ],
+      "flags": [
+        "NDESCBIT",
+        "CLIMBBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "mountain range": {
+      "id": "MOUNTAIN-RANGE",
+      "name": "mountain range",
+      "in": "MOUNTAINS",
+      "synonyms": [
+        "MOUNTAIN",
+        "RANGE"
+      ],
+      "adjectives": [
+        "IMPASSABLE",
+        "FLATHEAD"
+      ],
+      "flags": [
+        "NDESCBIT",
+        "CLIMBBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "water": {
+      "id": "GLOBAL-WATER",
+      "name": "water",
+      "in": "LOCAL-GLOBALS",
+      "synonyms": [
+        "WATER",
+        "QUANTITY"
+      ],
+      "adjectives": [],
+      "flags": [
+        "DRINKBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "quantity of water": {
+      "id": "WATER",
+      "name": "quantity of water",
+      "in": "BOTTLE",
+      "synonyms": [
+        "WATER",
+        "QUANTITY",
+        "LIQUID",
+        "H2O"
+      ],
+      "adjectives": [],
+      "flags": [
+        "TRYTAKEBIT",
+        "TAKEBIT",
+        "DRINKBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "chimney": {
+      "id": "CHIMNEY",
+      "name": "chimney",
+      "in": "LOCAL-GLOBALS",
+      "synonyms": [
+        "CHIMNEY"
+      ],
+      "adjectives": [
+        "DARK",
+        "NARROW"
+      ],
+      "flags": [
+        "CLIMBBIT",
+        "NDESCBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "number of ghosts": {
+      "id": "GHOSTS",
+      "name": "number of ghosts",
+      "in": "ENTRANCE-TO-HADES",
+      "synonyms": [
+        "GHOSTS",
+        "SPIRITS",
+        "FIENDS",
+        "FORCE"
+      ],
+      "adjectives": [
+        "INVISIBLE",
+        "EVIL"
+      ],
+      "flags": [
+        "ACTORBIT",
+        "NDESCBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "crystal skull": {
+      "id": "SKULL",
+      "name": "crystal skull",
+      "in": "LAND-OF-LIVING-DEAD",
+      "synonyms": [
+        "SKULL",
+        "HEAD",
+        "TREASURE"
+      ],
+      "adjectives": [
+        "CRYSTAL"
+      ],
+      "flags": [
+        "TAKEBIT"
+      ],
+      "value": 10,
+      "tvalue": 10,
+      "ldesc": "",
+      "fdesc": "Lying in one corner of the room is a beautifully carved crystal skull. It appears to be grinning at you rather nastily.",
+      "text": ""
+    },
+    "basket": {
+      "id": "LOWERED-BASKET",
+      "name": "basket",
+      "in": "LOWER-SHAFT",
+      "synonyms": [
+        "CAGE",
+        "DUMBWAITER",
+        "BASKET"
+      ],
+      "adjectives": [
+        "LOWERED"
+      ],
+      "flags": [
+        "TRYTAKEBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "From the chain is suspended a basket.",
+      "fdesc": "",
+      "text": ""
+    },
+    "basket (RAISED-BASKET)": {
+      "id": "RAISED-BASKET",
+      "name": "basket",
+      "in": "SHAFT-ROOM",
+      "synonyms": [
+        "CAGE",
+        "DUMBWAITER",
+        "BASKET"
+      ],
+      "adjectives": [],
+      "flags": [
+        "TRANSBIT",
+        "TRYTAKEBIT",
+        "CONTBIT",
+        "OPENBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "At the end of the chain is a basket.",
+      "fdesc": "",
+      "text": ""
+    },
+    "lunch": {
+      "id": "LUNCH",
+      "name": "lunch",
+      "in": "SANDWICH-BAG",
+      "synonyms": [
+        "FOOD",
+        "SANDWICH",
+        "LUNCH",
+        "DINNER"
+      ],
+      "adjectives": [
+        "HOT",
+        "PEPPER"
+      ],
+      "flags": [
+        "TAKEBIT",
+        "FOODBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "A hot pepper sandwich is here.",
+      "fdesc": "",
+      "text": ""
+    },
+    "bat": {
+      "id": "BAT",
+      "name": "bat",
+      "in": "BAT-ROOM",
+      "synonyms": [
+        "BAT",
+        "VAMPIRE"
+      ],
+      "adjectives": [
+        "VAMPIRE",
+        "DERANGED"
+      ],
+      "flags": [
+        "ACTORBIT",
+        "TRYTAKEBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "brass bell": {
+      "id": "BELL",
+      "name": "brass bell",
+      "in": "NORTH-TEMPLE",
+      "synonyms": [
+        "BELL"
+      ],
+      "adjectives": [
+        "SMALL",
+        "BRASS"
+      ],
+      "flags": [
+        "TAKEBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "red hot brass bell": {
+      "id": "HOT-BELL",
+      "name": "red hot brass bell",
+      "in": null,
+      "synonyms": [
+        "BELL"
+      ],
+      "adjectives": [
+        "BRASS",
+        "HOT",
+        "RED",
+        "SMALL"
+      ],
+      "flags": [
+        "TRYTAKEBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "On the ground is a red hot bell.",
+      "fdesc": "",
+      "text": ""
+    },
+    "bloody axe": {
+      "id": "AXE",
+      "name": "bloody axe",
+      "in": "TROLL",
+      "synonyms": [
+        "AXE",
+        "AX"
+      ],
+      "adjectives": [
+        "BLOODY"
+      ],
+      "flags": [
+        "WEAPONBIT",
+        "TRYTAKEBIT",
+        "TAKEBIT",
+        "NDESCBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "bolt": {
+      "id": "BOLT",
+      "name": "bolt",
+      "in": "DAM-ROOM",
+      "synonyms": [
+        "BOLT",
+        "NUT"
+      ],
+      "adjectives": [
+        "METAL",
+        "LARGE"
+      ],
+      "flags": [
+        "NDESCBIT",
+        "TURNBIT",
+        "TRYTAKEBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "green bubble": {
+      "id": "BUBBLE",
+      "name": "green bubble",
+      "in": "DAM-ROOM",
+      "synonyms": [
+        "BUBBLE"
+      ],
+      "adjectives": [
+        "SMALL",
+        "GREEN",
+        "PLASTIC"
+      ],
+      "flags": [
+        "NDESCBIT",
+        "TRYTAKEBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "altar": {
+      "id": "ALTAR",
+      "name": "altar",
+      "in": "SOUTH-TEMPLE",
+      "synonyms": [
+        "ALTAR"
+      ],
+      "adjectives": [],
+      "flags": [
+        "NDESCBIT",
+        "SURFACEBIT",
+        "CONTBIT",
+        "OPENBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "black book": {
+      "id": "BOOK",
+      "name": "black book",
+      "in": "ALTAR",
+      "synonyms": [
+        "BOOK",
+        "PRAYER",
+        "PAGE",
+        "BOOKS"
+      ],
+      "adjectives": [
+        "LARGE",
+        "BLACK"
+      ],
+      "flags": [
+        "READBIT",
+        "TAKEBIT",
+        "CONTBIT",
+        "BURNBIT",
+        "TURNBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "On the altar is a large black book, open to page 569.",
+      "text": ""
+    },
+    "broken lantern": {
+      "id": "BROKEN-LAMP",
+      "name": "broken lantern",
+      "in": null,
+      "synonyms": [
+        "LAMP",
+        "LANTERN"
+      ],
+      "adjectives": [
+        "BROKEN"
+      ],
+      "flags": [
+        "TAKEBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "sceptre": {
+      "id": "SCEPTRE",
+      "name": "sceptre",
+      "in": "COFFIN",
+      "synonyms": [
+        "SCEPTRE",
+        "SCEPTER",
+        "TREASURE"
+      ],
+      "adjectives": [
+        "SHARP",
+        "EGYPTIAN",
+        "ANCIENT",
+        "ENAMELED"
+      ],
+      "flags": [
+        "TAKEBIT",
+        "WEAPONBIT"
+      ],
+      "value": 4,
+      "tvalue": 6,
+      "ldesc": "An ornamented sceptre, tapering to a sharp point, is here.",
+      "fdesc": "A sceptre, possibly that of ancient Egypt itself, is in the coffin. The sceptre is ornamented with colored enamel, and tapers to a sharp point.",
+      "text": ""
+    },
+    "broken timber": {
+      "id": "TIMBERS",
+      "name": "broken timber",
+      "in": "TIMBER-ROOM",
+      "synonyms": [
+        "TIMBERS",
+        "PILE"
+      ],
+      "adjectives": [
+        "WOODEN",
+        "BROKEN"
+      ],
+      "flags": [
+        "TAKEBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "kitchen table": {
+      "id": "KITCHEN-TABLE",
+      "name": "kitchen table",
+      "in": "KITCHEN",
+      "synonyms": [
+        "TABLE"
+      ],
+      "adjectives": [
+        "KITCHEN"
+      ],
+      "flags": [
+        "NDESCBIT",
+        "CONTBIT",
+        "OPENBIT",
+        "SURFACEBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "table": {
+      "id": "ATTIC-TABLE",
+      "name": "table",
+      "in": "ATTIC",
+      "synonyms": [
+        "TABLE"
+      ],
+      "adjectives": [],
+      "flags": [
+        "NDESCBIT",
+        "CONTBIT",
+        "OPENBIT",
+        "SURFACEBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "brown sack": {
+      "id": "SANDWICH-BAG",
+      "name": "brown sack",
+      "in": "KITCHEN-TABLE",
+      "synonyms": [
+        "BAG",
+        "SACK"
+      ],
+      "adjectives": [
+        "BROWN",
+        "ELONGATED",
+        "SMELLY"
+      ],
+      "flags": [
+        "TAKEBIT",
+        "CONTBIT",
+        "BURNBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "On the table is an elongated brown sack, smelling of hot peppers.",
+      "text": ""
+    },
+    "group of tool chests": {
+      "id": "TOOL-CHEST",
+      "name": "group of tool chests",
+      "in": "MAINTENANCE-ROOM",
+      "synonyms": [
+        "CHEST",
+        "CHESTS",
+        "GROUP",
+        "TOOLCHESTS"
+      ],
+      "adjectives": [
+        "TOOL"
+      ],
+      "flags": [
+        "CONTBIT",
+        "OPENBIT",
+        "TRYTAKEBIT",
+        "SACREDBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "yellow button": {
+      "id": "YELLOW-BUTTON",
+      "name": "yellow button",
+      "in": "MAINTENANCE-ROOM",
+      "synonyms": [
+        "BUTTON",
+        "SWITCH"
+      ],
+      "adjectives": [
+        "YELLOW"
+      ],
+      "flags": [
+        "NDESCBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "brown button": {
+      "id": "BROWN-BUTTON",
+      "name": "brown button",
+      "in": "MAINTENANCE-ROOM",
+      "synonyms": [
+        "BUTTON",
+        "SWITCH"
+      ],
+      "adjectives": [
+        "BROWN"
+      ],
+      "flags": [
+        "NDESCBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "red button": {
+      "id": "RED-BUTTON",
+      "name": "red button",
+      "in": "MAINTENANCE-ROOM",
+      "synonyms": [
+        "BUTTON",
+        "SWITCH"
+      ],
+      "adjectives": [
+        "RED"
+      ],
+      "flags": [
+        "NDESCBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "blue button": {
+      "id": "BLUE-BUTTON",
+      "name": "blue button",
+      "in": "MAINTENANCE-ROOM",
+      "synonyms": [
+        "BUTTON",
+        "SWITCH"
+      ],
+      "adjectives": [
+        "BLUE"
+      ],
+      "flags": [
+        "NDESCBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "trophy case": {
+      "id": "TROPHY-CASE",
+      "name": "trophy case",
+      "in": "LIVING-ROOM",
+      "synonyms": [
+        "CASE"
+      ],
+      "adjectives": [
+        "TROPHY"
+      ],
+      "flags": [
+        "TRANSBIT",
+        "CONTBIT",
+        "NDESCBIT",
+        "TRYTAKEBIT",
+        "SEARCHBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "carpet": {
+      "id": "RUG",
+      "name": "carpet",
+      "in": "LIVING-ROOM",
+      "synonyms": [
+        "RUG",
+        "CARPET"
+      ],
+      "adjectives": [
+        "LARGE",
+        "ORIENTAL"
+      ],
+      "flags": [
+        "NDESCBIT",
+        "TRYTAKEBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "chalice": {
+      "id": "CHALICE",
+      "name": "chalice",
+      "in": "TREASURE-ROOM",
+      "synonyms": [
+        "CHALICE",
+        "CUP",
+        "SILVER",
+        "TREASURE"
+      ],
+      "adjectives": [
+        "SILVER",
+        "ENGRAVINGS"
+      ],
+      "flags": [
+        "TAKEBIT",
+        "TRYTAKEBIT",
+        "CONTBIT"
+      ],
+      "value": 10,
+      "tvalue": 5,
+      "ldesc": "There is a silver chalice, intricately engraved, here.",
+      "fdesc": "",
+      "text": ""
+    },
+    "clove of garlic": {
+      "id": "GARLIC",
+      "name": "clove of garlic",
+      "in": "SANDWICH-BAG",
+      "synonyms": [
+        "GARLIC",
+        "CLOVE"
+      ],
+      "adjectives": [],
+      "flags": [
+        "TAKEBIT",
+        "FOODBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "crystal trident": {
+      "id": "TRIDENT",
+      "name": "crystal trident",
+      "in": "ATLANTIS-ROOM",
+      "synonyms": [
+        "TRIDENT",
+        "FORK",
+        "TREASURE"
+      ],
+      "adjectives": [
+        "POSEIDON",
+        "OWN",
+        "CRYSTAL"
+      ],
+      "flags": [
+        "TAKEBIT"
+      ],
+      "value": 4,
+      "tvalue": 11,
+      "ldesc": "",
+      "fdesc": "On the shore lies Poseidon's own crystal trident.",
+      "text": ""
+    },
+    "cyclops": {
+      "id": "CYCLOPS",
+      "name": "cyclops",
+      "in": "CYCLOPS-ROOM",
+      "synonyms": [
+        "CYCLOPS",
+        "MONSTER",
+        "EYE"
+      ],
+      "adjectives": [
+        "HUNGRY",
+        "GIANT"
+      ],
+      "flags": [
+        "ACTORBIT",
+        "NDESCBIT",
+        "TRYTAKEBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "dam": {
+      "id": "DAM",
+      "name": "dam",
+      "in": "DAM-ROOM",
+      "synonyms": [
+        "DAM",
+        "GATE",
+        "GATES",
+        "FCD\\#3"
+      ],
+      "adjectives": [],
+      "flags": [
+        "NDESCBIT",
+        "TRYTAKEBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "trap door": {
+      "id": "TRAP-DOOR",
+      "name": "trap door",
+      "in": "LIVING-ROOM",
+      "synonyms": [
+        "DOOR",
+        "TRAPDOOR",
+        "TRAP-DOOR",
+        "COVER"
+      ],
+      "adjectives": [
+        "TRAP",
+        "DUSTY"
+      ],
+      "flags": [
+        "DOORBIT",
+        "NDESCBIT",
+        "INVISIBLE"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "boarded window": {
+      "id": "BOARDED-WINDOW",
+      "name": "boarded window",
+      "in": "LOCAL-GLOBALS",
+      "synonyms": [
+        "WINDOW"
+      ],
+      "adjectives": [
+        "BOARDED"
+      ],
+      "flags": [
+        "NDESCBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "door": {
+      "id": "FRONT-DOOR",
+      "name": "door",
+      "in": "WEST-OF-HOUSE",
+      "synonyms": [
+        "DOOR"
+      ],
+      "adjectives": [
+        "FRONT",
+        "BOARDED"
+      ],
+      "flags": [
+        "DOORBIT",
+        "NDESCBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "stone door": {
+      "id": "BARROW-DOOR",
+      "name": "stone door",
+      "in": "STONE-BARROW",
+      "synonyms": [
+        "DOOR"
+      ],
+      "adjectives": [
+        "HUGE",
+        "STONE"
+      ],
+      "flags": [
+        "DOORBIT",
+        "NDESCBIT",
+        "OPENBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "stone barrow": {
+      "id": "BARROW",
+      "name": "stone barrow",
+      "in": "STONE-BARROW",
+      "synonyms": [
+        "BARROW",
+        "TOMB"
+      ],
+      "adjectives": [
+        "MASSIVE",
+        "STONE"
+      ],
+      "flags": [
+        "NDESCBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "glass bottle": {
+      "id": "BOTTLE",
+      "name": "glass bottle",
+      "in": "KITCHEN-TABLE",
+      "synonyms": [
+        "BOTTLE",
+        "CONTAINER"
+      ],
+      "adjectives": [
+        "CLEAR",
+        "GLASS"
+      ],
+      "flags": [
+        "TAKEBIT",
+        "TRANSBIT",
+        "CONTBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "A bottle is sitting on the table.",
+      "text": ""
+    },
+    "crack": {
+      "id": "CRACK",
+      "name": "crack",
+      "in": "LOCAL-GLOBALS",
+      "synonyms": [
+        "CRACK"
+      ],
+      "adjectives": [
+        "NARROW"
+      ],
+      "flags": [
+        "NDESCBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "gold coffin": {
+      "id": "COFFIN",
+      "name": "gold coffin",
+      "in": "EGYPT-ROOM",
+      "synonyms": [
+        "COFFIN",
+        "CASKET",
+        "TREASURE"
+      ],
+      "adjectives": [
+        "SOLID",
+        "GOLD"
+      ],
+      "flags": [
+        "TAKEBIT",
+        "CONTBIT",
+        "SACREDBIT",
+        "SEARCHBIT"
+      ],
+      "value": 10,
+      "tvalue": 15,
+      "ldesc": "The solid-gold coffin used for the burial of Ramses II is here.",
+      "fdesc": "",
+      "text": ""
+    },
+    "grating": {
+      "id": "GRATE",
+      "name": "grating",
+      "in": "LOCAL-GLOBALS",
+      "synonyms": [
+        "GRATE",
+        "GRATING"
+      ],
+      "adjectives": [],
+      "flags": [
+        "DOORBIT",
+        "NDESCBIT",
+        "INVISIBLE"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "hand-held air pump": {
+      "id": "PUMP",
+      "name": "hand-held air pump",
+      "in": "RESERVOIR-NORTH",
+      "synonyms": [
+        "PUMP",
+        "AIR-PUMP",
+        "TOOL",
+        "TOOLS"
+      ],
+      "adjectives": [
+        "SMALL",
+        "HAND-HELD"
+      ],
+      "flags": [
+        "TAKEBIT",
+        "TOOLBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "huge diamond": {
+      "id": "DIAMOND",
+      "name": "huge diamond",
+      "in": null,
+      "synonyms": [
+        "DIAMOND",
+        "TREASURE"
+      ],
+      "adjectives": [
+        "HUGE",
+        "ENORMOUS"
+      ],
+      "flags": [
+        "TAKEBIT"
+      ],
+      "value": 10,
+      "tvalue": 10,
+      "ldesc": "There is an enormous diamond (perfectly cut) here.",
+      "fdesc": "",
+      "text": ""
+    },
+    "jade figurine": {
+      "id": "JADE",
+      "name": "jade figurine",
+      "in": "BAT-ROOM",
+      "synonyms": [
+        "FIGURINE",
+        "TREASURE"
+      ],
+      "adjectives": [
+        "EXQUISITE",
+        "JADE"
+      ],
+      "flags": [
+        "TAKEBIT"
+      ],
+      "value": 5,
+      "tvalue": 5,
+      "ldesc": "There is an exquisite jade figurine here.",
+      "fdesc": "",
+      "text": ""
+    },
+    "nasty knife": {
+      "id": "KNIFE",
+      "name": "nasty knife",
+      "in": "ATTIC-TABLE",
+      "synonyms": [
+        "KNIVES",
+        "KNIFE",
+        "BLADE"
+      ],
+      "adjectives": [
+        "NASTY",
+        "UNRUSTY"
+      ],
+      "flags": [
+        "TAKEBIT",
+        "WEAPONBIT",
+        "TRYTAKEBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "On a table is a nasty-looking knife.",
+      "text": ""
+    },
+    "skeleton": {
+      "id": "BONES",
+      "name": "skeleton",
+      "in": "MAZE-5",
+      "synonyms": [
+        "BONES",
+        "SKELETON",
+        "BODY"
+      ],
+      "adjectives": [],
+      "flags": [
+        "TRYTAKEBIT",
+        "NDESCBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "burned-out lantern": {
+      "id": "BURNED-OUT-LANTERN",
+      "name": "burned-out lantern",
+      "in": "MAZE-5",
+      "synonyms": [
+        "LANTERN",
+        "LAMP"
+      ],
+      "adjectives": [
+        "RUSTY",
+        "BURNED",
+        "DEAD",
+        "USELESS"
+      ],
+      "flags": [
+        "TAKEBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "The deceased adventurer's useless lantern is here.",
+      "text": ""
+    },
+    "leather bag of coins": {
+      "id": "BAG-OF-COINS",
+      "name": "leather bag of coins",
+      "in": "MAZE-5",
+      "synonyms": [
+        "BAG",
+        "COINS",
+        "TREASURE"
+      ],
+      "adjectives": [
+        "OLD",
+        "LEATHER"
+      ],
+      "flags": [
+        "TAKEBIT"
+      ],
+      "value": 10,
+      "tvalue": 5,
+      "ldesc": "An old leather bag, bulging with coins, is here.",
+      "fdesc": "",
+      "text": ""
+    },
+    "brass lantern": {
+      "id": "LAMP",
+      "name": "brass lantern",
+      "in": "LIVING-ROOM",
+      "synonyms": [
+        "LAMP",
+        "LANTERN",
+        "LIGHT"
+      ],
+      "adjectives": [
+        "BRASS"
+      ],
+      "flags": [
+        "TAKEBIT",
+        "LIGHTBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "There is a brass lantern (battery-powered) here.",
+      "fdesc": "A battery-powered brass lantern is on the trophy case.",
+      "text": ""
+    },
+    "large emerald": {
+      "id": "EMERALD",
+      "name": "large emerald",
+      "in": "BUOY",
+      "synonyms": [
+        "EMERALD",
+        "TREASURE"
+      ],
+      "adjectives": [
+        "LARGE"
+      ],
+      "flags": [
+        "TAKEBIT"
+      ],
+      "value": 5,
+      "tvalue": 10,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "leaflet": {
+      "id": "ADVERTISEMENT",
+      "name": "leaflet",
+      "in": "MAILBOX",
+      "synonyms": [
+        "ADVERTISEMENT",
+        "LEAFLET",
+        "BOOKLET",
+        "MAIL"
+      ],
+      "adjectives": [
+        "SMALL"
+      ],
+      "flags": [
+        "READBIT",
+        "TAKEBIT",
+        "BURNBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "A small leaflet is on the ground.",
+      "fdesc": "",
+      "text": "\\\"WELCOME TO ZORK!| | ZORK is a game of adventure, danger, and low cunning. In it you will explore some of the most amazing territory ever seen by mortals. No computer should be without one!\\\""
+    },
+    "leak": {
+      "id": "LEAK",
+      "name": "leak",
+      "in": "MAINTENANCE-ROOM",
+      "synonyms": [
+        "LEAK",
+        "DRIP",
+        "PIPE"
+      ],
+      "adjectives": [],
+      "flags": [
+        "NDESCBIT",
+        "INVISIBLE"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "machine": {
+      "id": "MACHINE",
+      "name": "machine",
+      "in": "MACHINE-ROOM",
+      "synonyms": [
+        "MACHINE",
+        "PDP10",
+        "DRYER",
+        "LID"
+      ],
+      "adjectives": [],
+      "flags": [
+        "CONTBIT",
+        "NDESCBIT",
+        "TRYTAKEBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "magic boat": {
+      "id": "INFLATED-BOAT",
+      "name": "magic boat",
+      "in": null,
+      "synonyms": [
+        "BOAT",
+        "RAFT"
+      ],
+      "adjectives": [
+        "INFLAT",
+        "MAGIC",
+        "PLASTIC",
+        "SEAWORTHY"
+      ],
+      "flags": [
+        "TAKEBIT",
+        "BURNBIT",
+        "VEHBIT",
+        "OPENBIT",
+        "SEARCHBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "small mailbox": {
+      "id": "MAILBOX",
+      "name": "small mailbox",
+      "in": "WEST-OF-HOUSE",
+      "synonyms": [
+        "MAILBOX",
+        "BOX"
+      ],
+      "adjectives": [
+        "SMALL"
+      ],
+      "flags": [
+        "CONTBIT",
+        "TRYTAKEBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "matchbook": {
+      "id": "MATCH",
+      "name": "matchbook",
+      "in": "DAM-LOBBY",
+      "synonyms": [
+        "MATCH",
+        "MATCHES",
+        "MATCHBOOK"
+      ],
+      "adjectives": [
+        "MATCH"
+      ],
+      "flags": [
+        "READBIT",
+        "TAKEBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "There is a matchbook whose cover says \\\"Visit Beautiful FCD#3\\\" here.",
+      "fdesc": "",
+      "text": ""
+    },
+    "mirror": {
+      "id": "MIRROR-2",
+      "name": "mirror",
+      "in": "MIRROR-ROOM-2",
+      "synonyms": [
+        "REFLECTION",
+        "MIRROR",
+        "ENORMOUS"
+      ],
+      "adjectives": [],
+      "flags": [
+        "TRYTAKEBIT",
+        "NDESCBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "mirror (MIRROR-1)": {
+      "id": "MIRROR-1",
+      "name": "mirror",
+      "in": "MIRROR-ROOM-1",
+      "synonyms": [
+        "REFLECTION",
+        "MIRROR",
+        "ENORMOUS"
+      ],
+      "adjectives": [],
+      "flags": [
+        "TRYTAKEBIT",
+        "NDESCBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "painting": {
+      "id": "PAINTING",
+      "name": "painting",
+      "in": "GALLERY",
+      "synonyms": [
+        "PAINTING",
+        "ART",
+        "CANVAS",
+        "TREASURE"
+      ],
+      "adjectives": [
+        "BEAUTI"
+      ],
+      "flags": [
+        "TAKEBIT",
+        "BURNBIT"
+      ],
+      "value": 4,
+      "tvalue": 6,
+      "ldesc": "A painting by a neglected genius is here.",
+      "fdesc": "Fortunately, there is still one chance for you to be a vandal, for on the far wall is a painting of unparalleled beauty.",
+      "text": ""
+    },
+    "pair of candles": {
+      "id": "CANDLES",
+      "name": "pair of candles",
+      "in": "SOUTH-TEMPLE",
+      "synonyms": [
+        "CANDLES",
+        "PAIR"
+      ],
+      "adjectives": [
+        "BURNING"
+      ],
+      "flags": [
+        "TAKEBIT",
+        "FLAMEBIT",
+        "ONBIT",
+        "LIGHTBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "On the two ends of the altar are burning candles.",
+      "text": ""
+    },
+    "small piece of vitreous slag": {
+      "id": "GUNK",
+      "name": "small piece of vitreous slag",
+      "in": null,
+      "synonyms": [
+        "GUNK",
+        "PIECE",
+        "SLAG"
+      ],
+      "adjectives": [
+        "SMALL",
+        "VITREOUS"
+      ],
+      "flags": [
+        "TAKEBIT",
+        "TRYTAKEBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "pile of bodies": {
+      "id": "BODIES",
+      "name": "pile of bodies",
+      "in": "LOCAL-GLOBALS",
+      "synonyms": [
+        "BODIES",
+        "BODY",
+        "REMAINS",
+        "PILE"
+      ],
+      "adjectives": [
+        "MANGLED"
+      ],
+      "flags": [
+        "NDESCBIT",
+        "TRYTAKEBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "pile of leaves": {
+      "id": "LEAVES",
+      "name": "pile of leaves",
+      "in": "GRATING-CLEARING",
+      "synonyms": [
+        "LEAVES",
+        "LEAF",
+        "PILE"
+      ],
+      "adjectives": [],
+      "flags": [
+        "TAKEBIT",
+        "BURNBIT",
+        "TRYTAKEBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "On the ground is a pile of leaves.",
+      "fdesc": "",
+      "text": ""
+    },
+    "punctured boat": {
+      "id": "PUNCTURED-BOAT",
+      "name": "punctured boat",
+      "in": null,
+      "synonyms": [
+        "BOAT",
+        "PILE",
+        "PLASTIC"
+      ],
+      "adjectives": [
+        "PLASTIC",
+        "PUNCTURE",
+        "LARGE"
+      ],
+      "flags": [
+        "TAKEBIT",
+        "BURNBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "pile of plastic": {
+      "id": "INFLATABLE-BOAT",
+      "name": "pile of plastic",
+      "in": "DAM-BASE",
+      "synonyms": [
+        "BOAT",
+        "PILE",
+        "PLASTIC",
+        "VALVE"
+      ],
+      "adjectives": [
+        "PLASTIC",
+        "INFLAT"
+      ],
+      "flags": [
+        "TAKEBIT",
+        "BURNBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "There is a folded pile of plastic here which has a small valve attached.",
+      "fdesc": "",
+      "text": ""
+    },
+    "platinum bar": {
+      "id": "BAR",
+      "name": "platinum bar",
+      "in": "LOUD-ROOM",
+      "synonyms": [
+        "BAR",
+        "PLATINUM",
+        "TREASURE"
+      ],
+      "adjectives": [
+        "PLATINUM",
+        "LARGE"
+      ],
+      "flags": [
+        "TAKEBIT",
+        "SACREDBIT"
+      ],
+      "value": 10,
+      "tvalue": 5,
+      "ldesc": "On the ground is a large platinum bar.",
+      "fdesc": "",
+      "text": ""
+    },
+    "pot of gold": {
+      "id": "POT-OF-GOLD",
+      "name": "pot of gold",
+      "in": "END-OF-RAINBOW",
+      "synonyms": [
+        "POT",
+        "GOLD",
+        "TREASURE"
+      ],
+      "adjectives": [
+        "GOLD"
+      ],
+      "flags": [
+        "TAKEBIT",
+        "INVISIBLE"
+      ],
+      "value": 10,
+      "tvalue": 10,
+      "ldesc": "",
+      "fdesc": "At the end of the rainbow is a pot of gold.",
+      "text": ""
+    },
+    "prayer": {
+      "id": "PRAYER",
+      "name": "prayer",
+      "in": "NORTH-TEMPLE",
+      "synonyms": [
+        "PRAYER",
+        "INSCRIPTION"
+      ],
+      "adjectives": [
+        "ANCIENT",
+        "OLD"
+      ],
+      "flags": [
+        "READBIT",
+        "SACREDBIT",
+        "NDESCBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "wooden railing": {
+      "id": "RAILING",
+      "name": "wooden railing",
+      "in": "DOME-ROOM",
+      "synonyms": [
+        "RAILING",
+        "RAIL"
+      ],
+      "adjectives": [
+        "WOODEN"
+      ],
+      "flags": [
+        "NDESCBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "rainbow": {
+      "id": "RAINBOW",
+      "name": "rainbow",
+      "in": "LOCAL-GLOBALS",
+      "synonyms": [
+        "RAINBOW"
+      ],
+      "adjectives": [],
+      "flags": [
+        "NDESCBIT",
+        "CLIMBBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "river": {
+      "id": "RIVER",
+      "name": "river",
+      "in": "LOCAL-GLOBALS",
+      "synonyms": [
+        "RIVER"
+      ],
+      "adjectives": [
+        "FRIGID"
+      ],
+      "flags": [
+        "NDESCBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "red buoy": {
+      "id": "BUOY",
+      "name": "red buoy",
+      "in": "RIVER-4",
+      "synonyms": [
+        "BUOY"
+      ],
+      "adjectives": [
+        "RED"
+      ],
+      "flags": [
+        "TAKEBIT",
+        "CONTBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "There is a red buoy here (probably a warning).",
+      "text": ""
+    },
+    "rope": {
+      "id": "ROPE",
+      "name": "rope",
+      "in": "ATTIC",
+      "synonyms": [
+        "ROPE",
+        "HEMP",
+        "COIL"
+      ],
+      "adjectives": [
+        "LARGE"
+      ],
+      "flags": [
+        "TAKEBIT",
+        "SACREDBIT",
+        "TRYTAKEBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "A large coil of rope is lying in the corner.",
+      "text": ""
+    },
+    "rusty knife": {
+      "id": "RUSTY-KNIFE",
+      "name": "rusty knife",
+      "in": "MAZE-5",
+      "synonyms": [
+        "KNIVES",
+        "KNIFE"
+      ],
+      "adjectives": [
+        "RUSTY"
+      ],
+      "flags": [
+        "TAKEBIT",
+        "TRYTAKEBIT",
+        "WEAPONBIT",
+        "TOOLBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "Beside the skeleton is a rusty knife.",
+      "text": ""
+    },
+    "sand": {
+      "id": "SAND",
+      "name": "sand",
+      "in": "SANDY-CAVE",
+      "synonyms": [
+        "SAND"
+      ],
+      "adjectives": [],
+      "flags": [
+        "NDESCBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "sapphire-encrusted bracelet": {
+      "id": "BRACELET",
+      "name": "sapphire-encrusted bracelet",
+      "in": "GAS-ROOM",
+      "synonyms": [
+        "BRACELET",
+        "JEWEL",
+        "SAPPHIRE",
+        "TREASURE"
+      ],
+      "adjectives": [
+        "SAPPHIRE"
+      ],
+      "flags": [
+        "TAKEBIT"
+      ],
+      "value": 5,
+      "tvalue": 5,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "screwdriver": {
+      "id": "SCREWDRIVER",
+      "name": "screwdriver",
+      "in": "MAINTENANCE-ROOM",
+      "synonyms": [
+        "SCREWDRIVER",
+        "TOOL",
+        "TOOLS",
+        "DRIVER"
+      ],
+      "adjectives": [
+        "SCREW"
+      ],
+      "flags": [
+        "TAKEBIT",
+        "TOOLBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "skeleton key": {
+      "id": "KEYS",
+      "name": "skeleton key",
+      "in": "MAZE-5",
+      "synonyms": [
+        "KEY"
+      ],
+      "adjectives": [
+        "SKELETON"
+      ],
+      "flags": [
+        "TAKEBIT",
+        "TOOLBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "shovel": {
+      "id": "SHOVEL",
+      "name": "shovel",
+      "in": "SANDY-BEACH",
+      "synonyms": [
+        "SHOVEL",
+        "TOOL",
+        "TOOLS"
+      ],
+      "adjectives": [],
+      "flags": [
+        "TAKEBIT",
+        "TOOLBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "small pile of coal": {
+      "id": "COAL",
+      "name": "small pile of coal",
+      "in": "DEAD-END-5",
+      "synonyms": [
+        "COAL",
+        "PILE",
+        "HEAP"
+      ],
+      "adjectives": [
+        "SMALL"
+      ],
+      "flags": [
+        "TAKEBIT",
+        "BURNBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "wooden ladder": {
+      "id": "LADDER",
+      "name": "wooden ladder",
+      "in": "LOCAL-GLOBALS",
+      "synonyms": [
+        "LADDER"
+      ],
+      "adjectives": [
+        "WOODEN",
+        "RICKETY",
+        "NARROW"
+      ],
+      "flags": [
+        "NDESCBIT",
+        "CLIMBBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "beautiful jeweled scarab": {
+      "id": "SCARAB",
+      "name": "beautiful jeweled scarab",
+      "in": "SANDY-CAVE",
+      "synonyms": [
+        "SCARAB",
+        "BUG",
+        "BEETLE",
+        "TREASURE"
+      ],
+      "adjectives": [
+        "BEAUTI",
+        "CARVED",
+        "JEWELED"
+      ],
+      "flags": [
+        "TAKEBIT",
+        "INVISIBLE"
+      ],
+      "value": 5,
+      "tvalue": 5,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "large bag": {
+      "id": "LARGE-BAG",
+      "name": "large bag",
+      "in": "THIEF",
+      "synonyms": [
+        "BAG"
+      ],
+      "adjectives": [
+        "LARGE",
+        "THIEFS"
+      ],
+      "flags": [
+        "TRYTAKEBIT",
+        "NDESCBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "stiletto": {
+      "id": "STILETTO",
+      "name": "stiletto",
+      "in": "THIEF",
+      "synonyms": [
+        "STILETTO"
+      ],
+      "adjectives": [
+        "VICIOUS"
+      ],
+      "flags": [
+        "WEAPONBIT",
+        "TRYTAKEBIT",
+        "TAKEBIT",
+        "NDESCBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "switch": {
+      "id": "MACHINE-SWITCH",
+      "name": "switch",
+      "in": "MACHINE-ROOM",
+      "synonyms": [
+        "SWITCH"
+      ],
+      "adjectives": [],
+      "flags": [
+        "NDESCBIT",
+        "TURNBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "wooden door": {
+      "id": "WOODEN-DOOR",
+      "name": "wooden door",
+      "in": "LIVING-ROOM",
+      "synonyms": [
+        "DOOR",
+        "LETTERING",
+        "WRITING"
+      ],
+      "adjectives": [
+        "WOODEN",
+        "GOTHIC",
+        "STRANGE",
+        "WEST"
+      ],
+      "flags": [
+        "READBIT",
+        "DOORBIT",
+        "NDESCBIT",
+        "TRANSBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": "The engravings translate to \\\"This space intentionally left blank.\\\""
+    },
+    "sword": {
+      "id": "SWORD",
+      "name": "sword",
+      "in": "LIVING-ROOM",
+      "synonyms": [
+        "SWORD",
+        "ORCRIST",
+        "GLAMDRING",
+        "BLADE"
+      ],
+      "adjectives": [
+        "ELVISH",
+        "OLD",
+        "ANTIQUE"
+      ],
+      "flags": [
+        "TAKEBIT",
+        "WEAPONBIT",
+        "TRYTAKEBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "Above the trophy case hangs an elvish sword of great antiquity.",
+      "text": ""
+    },
+    "ancient map": {
+      "id": "MAP",
+      "name": "ancient map",
+      "in": "TROPHY-CASE",
+      "synonyms": [
+        "PARCHMENT",
+        "MAP"
+      ],
+      "adjectives": [
+        "ANTIQUE",
+        "OLD",
+        "ANCIENT"
+      ],
+      "flags": [
+        "INVISIBLE",
+        "READBIT",
+        "TAKEBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "In the trophy case is an ancient parchment which appears to be a map.",
+      "text": "The map shows a forest with three clearings. The largest clearing contains a house. Three paths leave the large clearing. One of these paths, leading southwest, is marked \\\"To Stone Barrow\\\"."
+    },
+    "tan label": {
+      "id": "BOAT-LABEL",
+      "name": "tan label",
+      "in": "INFLATED-BOAT",
+      "synonyms": [
+        "LABEL",
+        "FINEPRINT",
+        "PRINT"
+      ],
+      "adjectives": [
+        "TAN",
+        "FINE"
+      ],
+      "flags": [
+        "READBIT",
+        "TAKEBIT",
+        "BURNBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "thief": {
+      "id": "THIEF",
+      "name": "thief",
+      "in": "ROUND-ROOM",
+      "synonyms": [
+        "THIEF",
+        "ROBBER",
+        "MAN",
+        "PERSON"
+      ],
+      "adjectives": [
+        "SHADY",
+        "SUSPICIOUS",
+        "SEEDY"
+      ],
+      "flags": [
+        "ACTORBIT",
+        "INVISIBLE",
+        "CONTBIT",
+        "OPENBIT",
+        "TRYTAKEBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "There is a suspicious-looking individual, holding a large bag, leaning against one wall. He is armed with a deadly stiletto.",
+      "fdesc": "",
+      "text": ""
+    },
+    "pedestal": {
+      "id": "PEDESTAL",
+      "name": "pedestal",
+      "in": "TORCH-ROOM",
+      "synonyms": [
+        "PEDESTAL"
+      ],
+      "adjectives": [
+        "WHITE",
+        "MARBLE"
+      ],
+      "flags": [
+        "NDESCBIT",
+        "CONTBIT",
+        "OPENBIT",
+        "SURFACEBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "torch": {
+      "id": "TORCH",
+      "name": "torch",
+      "in": "PEDESTAL",
+      "synonyms": [
+        "TORCH",
+        "IVORY",
+        "TREASURE"
+      ],
+      "adjectives": [
+        "FLAMING",
+        "IVORY"
+      ],
+      "flags": [
+        "TAKEBIT",
+        "FLAMEBIT",
+        "ONBIT",
+        "LIGHTBIT"
+      ],
+      "value": 14,
+      "tvalue": 6,
+      "ldesc": "",
+      "fdesc": "Sitting on the pedestal is a flaming torch, made of ivory.",
+      "text": ""
+    },
+    "tour guidebook": {
+      "id": "GUIDE",
+      "name": "tour guidebook",
+      "in": "DAM-LOBBY",
+      "synonyms": [
+        "GUIDE",
+        "BOOK",
+        "BOOKS",
+        "GUIDEBOOKS"
+      ],
+      "adjectives": [
+        "TOUR",
+        "GUIDE"
+      ],
+      "flags": [
+        "READBIT",
+        "TAKEBIT",
+        "BURNBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "Some guidebooks entitled \\\"Flood Control Dam #3\\\" are on the reception desk.",
+      "text": ""
+    },
+    "troll": {
+      "id": "TROLL",
+      "name": "troll",
+      "in": "TROLL-ROOM",
+      "synonyms": [
+        "TROLL"
+      ],
+      "adjectives": [
+        "NASTY"
+      ],
+      "flags": [
+        "ACTORBIT",
+        "OPENBIT",
+        "TRYTAKEBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "A nasty-looking troll, brandishing a bloody axe, blocks all passages out of the room.",
+      "fdesc": "",
+      "text": ""
+    },
+    "trunk of jewels": {
+      "id": "TRUNK",
+      "name": "trunk of jewels",
+      "in": "RESERVOIR",
+      "synonyms": [
+        "TRUNK",
+        "CHEST",
+        "JEWELS",
+        "TREASURE"
+      ],
+      "adjectives": [
+        "OLD"
+      ],
+      "flags": [
+        "TAKEBIT",
+        "INVISIBLE"
+      ],
+      "value": 15,
+      "tvalue": 5,
+      "ldesc": "There is an old trunk here, bulging with assorted jewels.",
+      "fdesc": "Lying half buried in the mud is an old trunk, bulging with jewels.",
+      "text": ""
+    },
+    "tube": {
+      "id": "TUBE",
+      "name": "tube",
+      "in": "MAINTENANCE-ROOM",
+      "synonyms": [
+        "TUBE",
+        "TOOTH",
+        "PASTE"
+      ],
+      "adjectives": [],
+      "flags": [
+        "TAKEBIT",
+        "CONTBIT",
+        "READBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "There is an object which looks like a tube of toothpaste here.",
+      "fdesc": "",
+      "text": "---> Frobozz Magic Gunk Company <---| All-Purpose Gunk"
+    },
+    "viscous material": {
+      "id": "PUTTY",
+      "name": "viscous material",
+      "in": "TUBE",
+      "synonyms": [
+        "MATERIAL",
+        "GUNK"
+      ],
+      "adjectives": [
+        "VISCOUS"
+      ],
+      "flags": [
+        "TAKEBIT",
+        "TOOLBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "wall with engravings": {
+      "id": "ENGRAVINGS",
+      "name": "wall with engravings",
+      "in": "ENGRAVINGS-CAVE",
+      "synonyms": [
+        "WALL",
+        "ENGRAVINGS",
+        "INSCRIPTION"
+      ],
+      "adjectives": [
+        "OLD",
+        "ANCIENT"
+      ],
+      "flags": [
+        "READBIT",
+        "SACREDBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "There are old engravings on the walls here.",
+      "fdesc": "",
+      "text": "The engravings were incised in the living rock of the cave wall by an unknown hand. They depict, in symbolic form, the beliefs of the ancient Zorkers. Skillfully interwoven with the bas reliefs are excerpts illustrating the major religious tenets of that time. Unfortunately, a later age seems to have considered them blasphemous and just as skillfully excised them."
+    },
+    "ZORK owner's manual": {
+      "id": "OWNERS-MANUAL",
+      "name": "ZORK owner's manual",
+      "in": "STUDIO",
+      "synonyms": [
+        "MANUAL",
+        "PIECE",
+        "PAPER"
+      ],
+      "adjectives": [
+        "ZORK",
+        "OWNERS",
+        "SMALL"
+      ],
+      "flags": [
+        "READBIT",
+        "TAKEBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "Loosely attached to a wall is a small piece of paper.",
+      "text": "Congratulations!| | You are the privileged owner of ZORK I: The Great Underground Empire, a self-contained and self-maintaining universe. If used and maintained in accordance with normal operating practices for small universes, ZORK will provide many months of trouble-free operation."
+    },
+    "cliff": {
+      "id": "CLIMBABLE-CLIFF",
+      "name": "cliff",
+      "in": "LOCAL-GLOBALS",
+      "synonyms": [
+        "WALL",
+        "CLIFF",
+        "WALLS",
+        "LEDGE"
+      ],
+      "adjectives": [
+        "ROCKY",
+        "SHEER"
+      ],
+      "flags": [
+        "NDESCBIT",
+        "CLIMBBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "white cliffs": {
+      "id": "WHITE-CLIFF",
+      "name": "white cliffs",
+      "in": "LOCAL-GLOBALS",
+      "synonyms": [
+        "CLIFF",
+        "CLIFFS"
+      ],
+      "adjectives": [
+        "WHITE"
+      ],
+      "flags": [
+        "NDESCBIT",
+        "CLIMBBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "wrench": {
+      "id": "WRENCH",
+      "name": "wrench",
+      "in": "MAINTENANCE-ROOM",
+      "synonyms": [
+        "WRENCH",
+        "TOOL",
+        "TOOLS"
+      ],
+      "adjectives": [],
+      "flags": [
+        "TAKEBIT",
+        "TOOLBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "control panel": {
+      "id": "CONTROL-PANEL",
+      "name": "control panel",
+      "in": "DAM-ROOM",
+      "synonyms": [
+        "PANEL"
+      ],
+      "adjectives": [
+        "CONTROL"
+      ],
+      "flags": [
+        "NDESCBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "bird's nest": {
+      "id": "NEST",
+      "name": "bird's nest",
+      "in": "UP-A-TREE",
+      "synonyms": [
+        "NEST"
+      ],
+      "adjectives": [
+        "BIRDS"
+      ],
+      "flags": [
+        "TAKEBIT",
+        "BURNBIT",
+        "CONTBIT",
+        "OPENBIT",
+        "SEARCHBIT"
+      ],
+      "value": 0,
+      "tvalue": 0,
+      "ldesc": "",
+      "fdesc": "Beside you on the branch is a small bird's nest.",
+      "text": ""
+    },
+    "jewel-encrusted egg": {
+      "id": "EGG",
+      "name": "jewel-encrusted egg",
+      "in": "NEST",
+      "synonyms": [
+        "EGG",
+        "TREASURE"
+      ],
+      "adjectives": [
+        "BIRDS",
+        "ENCRUSTED",
+        "JEWELED"
+      ],
+      "flags": [
+        "TAKEBIT",
+        "CONTBIT",
+        "SEARCHBIT"
+      ],
+      "value": 5,
+      "tvalue": 5,
+      "ldesc": "",
+      "fdesc": "In the bird's nest is a large egg encrusted with precious jewels, apparently scavenged by a childless songbird. The egg is covered with fine gold inlay, and ornamented in lapis lazuli and mother-of-pearl. Unlike most eggs, this one is hinged and closed with a delicate looking clasp. The egg appears extremely fragile.",
+      "text": ""
+    },
+    "broken jewel-encrusted egg": {
+      "id": "BROKEN-EGG",
+      "name": "broken jewel-encrusted egg",
+      "in": null,
+      "synonyms": [
+        "EGG",
+        "TREASURE"
+      ],
+      "adjectives": [
+        "BROKEN",
+        "BIRDS",
+        "ENCRUSTED",
+        "JEWEL"
+      ],
+      "flags": [
+        "TAKEBIT",
+        "CONTBIT",
+        "OPENBIT"
+      ],
+      "value": 0,
+      "tvalue": 2,
+      "ldesc": "There is a somewhat ruined egg here.",
+      "fdesc": "",
+      "text": ""
+    },
+    "beautiful brass bauble": {
+      "id": "BAUBLE",
+      "name": "beautiful brass bauble",
+      "in": null,
+      "synonyms": [
+        "BAUBLE",
+        "TREASURE"
+      ],
+      "adjectives": [
+        "BRASS",
+        "BEAUTI"
+      ],
+      "flags": [
+        "TAKEBIT"
+      ],
+      "value": 1,
+      "tvalue": 1,
+      "ldesc": "",
+      "fdesc": "",
+      "text": ""
+    },
+    "golden clockwork canary": {
+      "id": "CANARY",
+      "name": "golden clockwork canary",
+      "in": "EGG",
+      "synonyms": [
+        "CANARY",
+        "TREASURE"
+      ],
+      "adjectives": [
+        "CLOCKWORK",
+        "GOLD",
+        "GOLDEN"
+      ],
+      "flags": [
+        "TAKEBIT",
+        "SEARCHBIT"
+      ],
+      "value": 6,
+      "tvalue": 4,
+      "ldesc": "",
+      "fdesc": "There is a golden clockwork canary nestled in the egg. It has ruby eyes and a silver beak. Through a crystal window below its left wing you can see intricate machinery inside. It appears to have wound down.",
+      "text": ""
+    },
+    "broken clockwork canary": {
+      "id": "BROKEN-CANARY",
+      "name": "broken clockwork canary",
+      "in": "BROKEN-EGG",
+      "synonyms": [
+        "CANARY",
+        "TREASURE"
+      ],
+      "adjectives": [
+        "BROKEN",
+        "CLOCKWORK",
+        "GOLD",
+        "GOLDEN"
+      ],
+      "flags": [
+        "TAKEBIT"
+      ],
+      "value": 0,
+      "tvalue": 1,
+      "ldesc": "",
+      "fdesc": "There is a golden clockwork canary nestled in the egg. It seems to have recently had a bad experience. The mountings for its jewel-like eyes are empty, and its silver beak is crumpled. Through a cracked crystal window below its left wing you can see the remains of intricate machinery. It is not clear what result winding it would have, as the mainspring seems sprung.",
+      "text": ""
+    }
+  },
+  "summary": {
+    "rooms_count": 110,
+    "objects_count": 120
+  }
+}
