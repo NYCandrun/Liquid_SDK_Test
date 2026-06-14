@@ -167,9 +167,74 @@ body{display:flex;flex-direction:column;height:100dvh;padding:env(safe-area-inse
 /*INLINE_JSZM*/
 </script>
 
+<script id="world-json" type="application/json">INLINE_WORLD_JSON</script>
+
 <script>
 // ---------- Embedded story file (Zork I, Release 88) ----------
 const STORY_B64 = "INLINE_STORY_B64";
+
+// ---------- Embedded world data (parsed from ZIL source) ----------
+let WORLD = null;
+try {
+  const wj = document.getElementById('world-json');
+  if (wj && wj.textContent.trim()) WORLD = JSON.parse(wj.textContent);
+} catch(e){ console.warn('World JSON parse failed:', e); }
+
+// Build a lowercase-name index for fuzzy room lookup
+const WORLD_INDEX = {};
+if (WORLD && WORLD.rooms) {
+  for (const k of Object.keys(WORLD.rooms)) WORLD_INDEX[k.toLowerCase()] = k;
+}
+
+// Find the current room entry by matching statusLine / lastRoomText against known room names.
+// Zork status line begins with the room name (e.g. "West of House   Score: 0  Moves: 1").
+function worldLookup(){
+  if (!WORLD || !WORLD.rooms) return null;
+  const candidates = [];
+  if (statusLine) {
+    // Strip trailing "Score:" / "Moves:" portion
+    let head = statusLine.replace(/\s+Score:.*$/i, '').replace(/\s+\d+\s*\/\s*\d+\s*$/, '').trim();
+    if (head) candidates.push(head);
+  }
+  if (lastRoomText) {
+    const firstLine = lastRoomText.split('\n')[0].trim();
+    if (firstLine) candidates.push(firstLine);
+  }
+  for (const c of candidates) {
+    const key = WORLD_INDEX[c.toLowerCase()];
+    if (key) return { name: key, room: WORLD.rooms[key] };
+  }
+  // Fuzzy: try matching any candidate that starts with a known room name
+  for (const c of candidates) {
+    const low = c.toLowerCase();
+    for (const name of Object.keys(WORLD_INDEX)) {
+      if (low.startsWith(name)) return { name: WORLD_INDEX[name], room: WORLD.rooms[WORLD_INDEX[name]] };
+    }
+  }
+  return null;
+}
+
+// Format the world entry as compact ground-truth context for the LLM.
+function worldGroundTruth(){
+  const hit = worldLookup();
+  if (!hit) return '';
+  const r = hit.room;
+  const lines = ['WORLD DATA (ground truth — do not contradict):'];
+  lines.push('Room: ' + hit.name);
+  if (r.exits && r.exits.length) {
+    const exitLines = r.exits.map(e => {
+      if (e.blocked) return `  - ${e.dir}: BLOCKED (${e.blocked})`;
+      if (e.condition) return `  - ${e.dir} -> ${e.to || e.to_id} (only if ${e.condition}${e.else_blocked ? '; else: '+e.else_blocked : ''})`;
+      return `  - ${e.dir} -> ${e.to || e.to_id}`;
+    });
+    lines.push('Exits:');
+    lines.push(...exitLines);
+  }
+  if (r.items && r.items.length) {
+    lines.push('Items here (from world data): ' + r.items.join(', '));
+  }
+  return lines.join('\n');
+}
 
 function b64ToBytes(b64){
   const bin = atob(b64);
@@ -454,13 +519,14 @@ function gameContext(){
   return [
     statusLine ? 'STATUS: ' + statusLine : '',
     lastRoomText ? 'CURRENT SCENE:\n' + lastRoomText : '',
+    worldGroundTruth(),
     turnLog.length ? 'RECENT TURNS:\n' + turnLog.slice(-10).map(t=>`> ${t.player}\n${(t.game||'').slice(0,200)}`).join('\n\n') : '',
   ].filter(Boolean).join('\n\n');
 }
 
 async function aiHint(level){
   const t = addThinking('Hint');
-  const sys = `You are a helpful, terse hint-giver for the text adventure Zork. Give ${level==='vague'?'a very vague nudge (1 short sentence)':level==='spoiler'?'a direct, specific tip including what to do next (2-3 sentences)':'a useful hint that points the player toward what to try next without spoiling (1-2 sentences)'}. Speak as a wise narrator. Do NOT invent items or rooms not in the scene; only suggest standard Zork verbs (look, take, drop, open, close, north/south/east/west/up/down, climb, light, attack, give, throw, examine, read).`;
+  const sys = `You are a helpful, terse hint-giver for the text adventure Zork. Give ${level==='vague'?'a very vague nudge (1 short sentence)':level==='spoiler'?'a direct, specific tip including what to do next (2-3 sentences)':'a useful hint that points the player toward what to try next without spoiling (1-2 sentences)'}. Speak as a wise narrator. CRITICAL: When a WORLD DATA section is provided, treat it as ground truth. Only mention exits, items, and connections listed there. Never invent items, rooms, or exits not present in the scene or world data. Only suggest standard Zork verbs (look, take, drop, open, close, north/south/east/west/up/down, climb, light, attack, give, throw, examine, read).`;
   const user = `${gameContext()}\n\nGive the player a ${level} hint.`;
   const out = await callLLM(sys, user);
   if (out) t.finish(out); else t.el.remove();
