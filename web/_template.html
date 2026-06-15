@@ -123,7 +123,8 @@ body{display:flex;flex-direction:column;height:100dvh;padding:env(safe-area-inse
 
 <div class="inputbar">
   <div class="inputwrap">
-    <input id="input" type="text" placeholder="Type a command…" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false">
+    <input id="input" type="text" placeholder="Type a command…" autocomplete="on" autocapitalize="sentences" autocorrect="on" spellcheck="true" list="zork-words">
+    <datalist id="zork-words"></datalist>
     <button class="sendbtn" id="send" aria-label="Send">
       <svg viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
     </button>
@@ -185,6 +186,46 @@ const WORLD_INDEX = {};
 if (WORLD && WORLD.rooms) {
   for (const k of Object.keys(WORLD.rooms)) WORLD_INDEX[k.toLowerCase()] = k;
 }
+
+// ---------- Populate the autocorrect suggestion list ----------
+// Standard Zork verbs + every room name + every object name from the world JSON.
+// The browser uses this list to tame autocorrect on mobile so it stops mangling
+// Zork-specific words like "grue", "leaflet", "zorkmid".
+const ZORK_VERBS = [
+  'look','examine','take','drop','open','close','read','put','give','throw',
+  'attack','kill','break','move','push','pull','turn','tie','untie','light',
+  'extinguish','enter','exit','climb','jump','swim','wait','inventory','i',
+  'wear','remove','eat','drink','smell','listen','wake','sleep','pray','dig',
+  'fill','empty','pour','cut','knock','lock','unlock','wind','rub','touch',
+  'kiss','answer','say','tell','hello','yes','no','again','g','save','restore',
+  'restart','quit','score','verbose','brief','superbrief',
+  'north','south','east','west','northeast','northwest','southeast','southwest',
+  'up','down','in','out','n','s','e','w','ne','nw','se','sw','u','d',
+  // AI feature commands
+  'hint','vague hint','spoiler hint','describe','recap'
+];
+(function populateSuggestionList(){
+  const dl = document.getElementById('zork-words');
+  if (!dl) return;
+  const words = new Set(ZORK_VERBS);
+  // Skip internal-only entries (the ZIL parser leaves placeholder rooms like "(maze-2)")
+  const skip = w => !w || w.startsWith('(') || /[^a-z\s'-]/.test(w);
+  if (WORLD && WORLD.rooms) for (const k of Object.keys(WORLD.rooms)) { const w = k.toLowerCase(); if (!skip(w)) words.add(w); }
+  if (WORLD && WORLD.objects) for (const k of Object.keys(WORLD.objects)) { const w = k.toLowerCase(); if (!skip(w)) words.add(w); }
+  // Add individual tokens so single-word object/room references also suggest correctly
+  const tokens = new Set();
+  for (const w of words) for (const t of w.split(/\s+/)) if (t.length > 2) tokens.add(t);
+  for (const t of tokens) words.add(t);
+  const sorted = Array.from(words).sort();
+  const frag = document.createDocumentFragment();
+  for (const w of sorted) {
+    const opt = document.createElement('option');
+    opt.value = w;
+    frag.appendChild(opt);
+  }
+  dl.appendChild(frag);
+  console.log('Suggestion list:', sorted.length, 'entries');
+})();
 
 // Find the current room entry by matching statusLine / lastRoomText against known room names.
 // Zork status line begins with the room name (e.g. "West of House   Score: 0  Moves: 1").
